@@ -137,7 +137,7 @@ def Admin():
 
     if AlterarValores5:
 
-        comando = f'INSERT INTO user (user,email,senha,nome,telefone) VALUES ("{user}","{email}","{passw}","{nc}","{Telefone}")'
+        comando = f'INSERT INTO usuario (user,email,senha,nome,telefone) VALUES ("{user}","{email}","{passw}","{nc}","{Telefone}")'
         cursor.execute(comando)
         conexao.commit()
         
