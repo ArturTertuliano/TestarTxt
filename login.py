@@ -40,11 +40,12 @@ def create_download_link(val, filename):
 def main():
 
     conexao = mysql.connector.connect(
-        host = '192.168.100.70',
-        user ='verificar',
-        password='@Testeserve3431urso',
-        database='dados',
+    host = 'sql10.freesqldatabase.com',
+    user ='sql10579080',
+    password='qsCRMIUtyk',
+    database='sql10579080',
     )
+
     cursor = conexao.cursor()
     
     comando = f'SELECT * FROM tarifa'
@@ -113,7 +114,7 @@ def main():
 
     if export_as_pdf:
         bar = st.progress(0)
-        print(0)
+        
         Digite = Estados+", "+ Cidade
         lista1 = Digite.split(', ')
         if TipoLigacao1 == 'MONOFASICO':
@@ -205,7 +206,7 @@ def main():
         PorcentReal = round((RelacaoConsumo / ConsumoAno)* 100, 2)
 
         bar.progress(10)
-        print(10)
+        
         if Estrutura1 == "Solo":
             if Inversor1 == 'Inversor':
                 for i in range(len(fa)):
@@ -370,7 +371,7 @@ def main():
     
         
         bar.progress(30)
-        print(30)
+        
         pdf.add_page()
         
         pdf.image("Imagens/inicio.jpg",5,0,w=200)
@@ -426,7 +427,7 @@ def main():
 
 
         bar.progress(40)
-        print(40)
+        
     
         pdf.add_page()
 
@@ -539,7 +540,7 @@ def main():
 
     
         bar.progress(50)
-        print(50)
+        
                 
         pdf.add_page()
 
@@ -591,7 +592,7 @@ def main():
         pdf.multi_cell(175,5, 'As estimativas de geração de energia, custos e economia foi baseada e projetada com base nas informações de consumo apresentadas pelo cliente e no estudo de irradiação solar local, tal como na análise da inflação da compra de energia elétrica.',border = 0)
 
         bar.progress(60)
-        print(60)
+        
         pdf.text(20,195,txt='Economia mensal')
         pdf.text(130,195,txt='R$ '+str(thousand_sep(round(MediaSimulacao))).replace(',','.')+',00')
         pdf.text(20,200,txt='Previsão de conta após instalação')
@@ -605,7 +606,7 @@ def main():
 
 
         bar.progress(70)
-        print(70)
+        
 
         pdf.add_page()
         
@@ -648,7 +649,7 @@ def main():
         pdf.text(150,245, txt='Data: '+str(data.day)+' / '+str(data.month)+' / '+str(data.year))
         pdf.line(20, 190, 80, 190)
 
-        #pdf.text(25,235,txt= Nome)
+       
         
         pdf.cell(75,100,Nome,ln=1,align='C')
         pdf.line(20, 240, 80, 240)
@@ -665,7 +666,7 @@ def main():
       
     
         bar.progress(80)
-        print(80)
+        
         pdf.add_page()
         pdf.image("Imagens/fundoPDF.jpg",0,0,w=230)
         pdf.image("Imagens/dubai.png",83,15,w=40,h=20)
@@ -729,7 +730,7 @@ def main():
         pdf.image(nomeImage,15,200,w=180,h=45)
 
         bar.progress(85)
-        print(85)
+        
         pdf.add_page()
         
         if Pessoa == 'Fisica':
@@ -744,7 +745,7 @@ def main():
         st.markdown(html, unsafe_allow_html=True)
 
         bar.progress(100)
-        print(100)
+        
         st.success("PDF pronto pra download!")
         cursor.close()
         conexao.close()  
