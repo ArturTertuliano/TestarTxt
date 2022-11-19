@@ -158,7 +158,7 @@ def show_logout_page():
 def LoggedIn_Clicked(userName, password):
 
     global teste
-    comando = f'SELECT * FROM user WHERE user = "{userName}"'
+    comando = f'SELECT * FROM usuario WHERE user = "{userName}"'
     cursor.execute(comando)
     resultado = cursor.fetchall()
     user = resultado[0][1]
