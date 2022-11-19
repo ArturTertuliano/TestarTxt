@@ -21,8 +21,8 @@ div.stButton > button:first-child {
 """
 conexao = mysql.connector.connect(
     host = '192.168.100.70',
-    user ='verificar',
-    password='artur102102',
+    user ='TesteUser',
+    password='@Testeserve3431urso',
     database='dados',
 )
 
