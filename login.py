@@ -42,7 +42,7 @@ def main():
     conexao = mysql.connector.connect(
         host = '192.168.100.70',
         user ='root',
-        password='',
+        password='@Testeserve3431urso',
         database='dados',
     )
     cursor = conexao.cursor()
