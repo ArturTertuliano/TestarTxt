@@ -654,7 +654,7 @@ def main():
         
         if Inversor1 == 'Micro Inversor':
             
-            pdf.image("Imagens/micro.jpg",100,170,w=100,h=70)
+            pdf.image("Imagens/micro.png",100,170,w=100,h=70)
       
     
         bar.progress(80)
