@@ -152,8 +152,8 @@ def show_logout_page():
 
     with logOutSection:
 
-        st.sidebar.title("Sair da conta",key="teste")
-        st.sidebar.button ("Sair", key="logout", on_click=LoggedOut_Clicked)
+        teste1 = st.sidebar.title("Sair da conta")
+        teste2 = st.sidebar.button ("Sair", key="logout", on_click=LoggedOut_Clicked)
     
 def LoggedIn_Clicked(userName, password):
     try:
@@ -185,7 +185,7 @@ def show_login_page():
         
             userName = st.text_input ("Usuário")
             password = st.text_input ("Senha", type="password")
-            st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
+            teste3 = st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
            
 
 def finish():
