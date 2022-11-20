@@ -169,7 +169,7 @@ def LoggedIn_Clicked(userName, password):
             st.session_state['key'] = True
 
         if userName == user and password == senha:
-
+            lg.a = user
             st.session_state['loggedIn'] = True
             
     except:
