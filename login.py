@@ -40,7 +40,7 @@ def create_download_link(val, filename):
 
 
 def main():
-    st.stop()
+    
     conexao = mysql.connector.connect(
     host = 'sql10.freesqldatabase.com',
     user ='sql10579080',
