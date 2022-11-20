@@ -185,8 +185,10 @@ def show_login_page():
         
             userName = st.text_input ("Usuário")
             password = st.text_input ("Senha", type="password")
-            st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
-            
+            #st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
+            login = st.button("Entrar")
+            if login:
+                LoggedIn_Clicked(userName,password)
 
 def finish():
     cursor.close()
