@@ -795,7 +795,7 @@ def main():
             pdf.text(20,267, txt='OBSERVAÇÃO:___________________________________________________')
             pdf.text(20,277, txt='OBS.: comprovantes de renda (HOLERITE, EXTRATO BANCARIO, IR ETC.)')
             
-            
+        html = create_download_link(pdf.output(dest="S").encode("latin-1"), Nome+"_DubaiEnergy")  
         st.markdown(html, unsafe_allow_html=True)
 
         bar.progress(100)
