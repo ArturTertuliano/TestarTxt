@@ -165,22 +165,20 @@ def LoggedIn_Clicked(userName, password):
     senha = resultado[0][3]
     teste = user
 
-    if userName == "admin" and password == senha:
-        
-        st.session_state['key'] = True
     
-        
-    if userName == user and password == senha:
-        
-        st.session_state['loggedIn'] = True
-        
     if userName != user and password != senha:
     
         st.session_state['loggedIn'] = False
         st.error("Usuário ou senha inválido!")
+    
+    if userName == "admin" and password == senha:
         
+        st.session_state['key'] = True
     
-    
+    if userName == user and password == senha:
+        
+        st.session_state['loggedIn'] = True
+         
 def show_login_page():
     global userName
     with loginSection:
