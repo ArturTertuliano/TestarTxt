@@ -670,8 +670,8 @@ def main():
         pdf.add_page()
         pdf.image("Imagens/fundoPDF.jpg",0,0,w=230)
         pdf.image("Imagens/dubai.png",83,15,w=40,h=20)
-        pdf.image("Imagens/fundo.png",45,60,w=130,h=50)
-        pdf.image("Imagens/fundo-cinza.png",45,80,w=130,h=85)
+        pdf.image("Imagens/fundo.png",35,60,w=130,h=50)
+        pdf.image("Imagens/fundo-cinza.png",35,80,w=130,h=85)
 
         pdf.set_font('Times','B',size=20)
         
@@ -681,31 +681,31 @@ def main():
         
         pdf.set_text_color(255,255,255)
         pdf.set_font('arial', size=10)
-        pdf.text(30,70,txt='Valor do Financiamento: ')
-        pdf.text(30,75,txt='R$ '+str(thousand_sep(CapitalFixo)).replace(',','.')+',00')
+        pdf.text(40,70,txt='Valor do Financiamento: ')
+        pdf.text(40,75,txt='R$ '+str(thousand_sep(CapitalFixo)).replace(',','.')+',00')
 
-        pdf.text(85,70,txt='Entrada de: ')
-        pdf.text(85,75,txt='R$ 0,00 ')
+        pdf.text(95,70,txt='Entrada de: ')
+        pdf.text(95,75,txt='R$ 0,00 ')
 
-        pdf.text(120,70,txt='Carência de:')
-        pdf.text(120,75,txt=str(int(carencia1)*30)+' Dias ('+str(carencia1)+' Meses) ')
+        pdf.text(130,70,txt='Carência de:')
+        pdf.text(130,75,txt=str(int(carencia1)*30)+' Dias ('+str(carencia1)+' Meses) ')
         
         pdf.set_text_color(0,0,0)
 
-        pdf.text(70,90,txt='Opção de pagamento Pré-Fixo')
-        pdf.text(78,95,txt='Sem correção anual')
+        pdf.text(80,90,txt='Opção de pagamento Pré-Fixo')
+        pdf.text(88,95,txt='Sem correção anual')
 
         
 
-        pdf.text(40,105,txt='Prazo')
-        pdf.text(118,105,txt='Parcela')
-        pdf.text(115,110,txt='sem seguro')
+        pdf.text(50,105,txt='Prazo')
+        pdf.text(128,105,txt='Parcela')
+        pdf.text(125,110,txt='sem seguro')
 
-        pdf.text(40,120,txt='12x ')
-        pdf.text(40,130,txt='24x ')
-        pdf.text(40,140,txt='36x ')
-        pdf.text(40,150,txt='60x ')
-        pdf.text(40,160,txt='72x ')
+        pdf.text(50,120,txt='12x ')
+        pdf.text(50,130,txt='24x ')
+        pdf.text(50,140,txt='36x ')
+        pdf.text(50,150,txt='60x ')
+        pdf.text(50,160,txt='72x ')
 
         comando = f'SELECT * FROM parcelas'
         cursor.execute(comando)
@@ -716,7 +716,7 @@ def main():
         l = 120
         for i in range(5):
             Valor = (CapitalFixo*(juros[i]/100))/(1-((1+(juros[i]/100))**parcelas[i]))
-            pdf.text(115,l,txt=str(thousand_sep(round(Valor))).replace(',','.')+',00')
+            pdf.text(125,l,txt=str(thousand_sep(round(Valor))).replace(',','.')+',00')
             l=l+10
 
 
