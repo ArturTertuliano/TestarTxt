@@ -152,7 +152,7 @@ def show_logout_page():
 
     with logOutSection:
 
-        st.sidebar.title("Sair da conta")
+        st.sidebar.title("Sair da conta",key="teste")
         st.sidebar.button ("Sair", key="logout", on_click=LoggedOut_Clicked)
     
 def LoggedIn_Clicked(userName, password):
