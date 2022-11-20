@@ -168,12 +168,13 @@ def LoggedIn_Clicked(userName, password):
     if userName == "admin" and password == senha:
         
         st.session_state['key'] = True
+    
         
-    elif userName == user and password == senha:
+    if userName == user and password == senha:
         
         st.session_state['loggedIn'] = True
         
-    elif userName != user and password != senha:
+    if userName != user and password != senha:
     
         st.session_state['loggedIn'] = False
         st.error("Usuário ou senha inválido!")
