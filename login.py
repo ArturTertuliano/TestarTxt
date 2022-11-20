@@ -40,7 +40,7 @@ def create_download_link(val, filename):
 
 
 def main():
-
+    st.stop()
     conexao = mysql.connector.connect(
     host = 'sql10.freesqldatabase.com',
     user ='sql10579080',
@@ -113,7 +113,7 @@ def main():
     carencia1 = st.selectbox("Carência (Mês)",carencia)
     
     export_as_pdf = st.button("Gerar PDF")
-    st.stop()
+    
     if export_as_pdf:
         bar = st.progress(0)
         
