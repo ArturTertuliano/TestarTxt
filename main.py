@@ -157,26 +157,26 @@ def show_logout_page():
     
 def LoggedIn_Clicked(userName, password):
 
-    global teste
     comando = f'SELECT * FROM usuario WHERE user = "{userName}"'
     cursor.execute(comando)
     resultado = cursor.fetchall()
     user = resultado[0][1]
     senha = resultado[0][3]
-   
-    if userName != user and password != senha:
-    
-        st.session_state['loggedIn'] = False
-        st.error("Usuário ou senha inválido!")
-    
-    elif userName == "admin" and password == senha:
+    try:
+     
+        if userName == "admin" and password == senha:
+
+            st.session_state['key'] = True
+
+        if userName == user and password == senha:
+
+            st.session_state['loggedIn'] = True
+            
+    except:
         
-        st.session_state['key'] = True
-    
-    elif userName == user and password == senha:
+          st.session_state['loggedIn'] = False
+          st.error("Usuário ou senha inválido!")
         
-        st.session_state['loggedIn'] = True
-         
 def show_login_page():
     global userName
     with loginSection:
