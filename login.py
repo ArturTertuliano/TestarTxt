@@ -10,6 +10,8 @@ import pandas as pd
 import mysql.connector
 import main as mn
 
+a = ''
+
 def convertImage(nomeImage): 
     img = Image.open(nomeImage) 
     img = img.convert("RGBA") 
@@ -303,8 +305,11 @@ def main():
         K = 90
         J = 400
 
+        comando = f'SELECT * FROM usuario WHERE user = "{a}"'
+        cursor.execute(comando)
+        resultado = cursor.fetchall()
+        vendedor = resultado[0][4]
         
-        vendedor = 'Escritório'
         #proposta = '20'
         uf = Digite.split(',')
         data = datetime.now()
