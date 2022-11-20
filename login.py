@@ -606,15 +606,7 @@ def main():
 
 
         bar.progress(70)
-        
-
-        pdf.add_page()
-        
-        pdf.set_font('Times','B',size=14)
-        pdf.image("Imagens/obras.jpg",0,20,w=210)
-        pdf.cell(190,10,'3 - ALGUMAS INSTALAÇÕES DUBAI ENERGY',ln=1,align='C')
-        
-
+       
         pdf.add_page()
         pdf.image("Imagens/fundoPDF.jpg",0,0,w=230)
         pdf.image("Imagens/fundo.png",15,32,w=180,h=35)
@@ -656,9 +648,9 @@ def main():
         pdf.text(25,200,txt= 'Autorização para vistoria técnica')
 
         pdf.set_font('Times','B',size=12)
-        pdf.text(15,15,txt='4 - GARANTIA E RESPONSABILIDADE LEGAL')
-        pdf.text(15,25,txt='4.1 - GARANTIA DOS EQUIPAMENTOS')
-        pdf.text(15,80,txt='4.2 - RESPONSABILIDADE LEGAL')
+        pdf.text(15,15,txt='3 - GARANTIA E RESPONSABILIDADE LEGAL')
+        pdf.text(15,25,txt='3.1 - GARANTIA DOS EQUIPAMENTOS')
+        pdf.text(15,80,txt='3.2 - RESPONSABILIDADE LEGAL')
         
         if Inversor1 == 'Micro Inversor':
             
@@ -731,17 +723,79 @@ def main():
 
         bar.progress(85)
         
+        
         pdf.add_page()
         
+        pdf.set_font('Times','B',size=14)
+        pdf.image("Imagens/obras.jpg",0,20,w=210)
+        pdf.cell(190,10,'ALGUMAS INSTALAÇÕES DUBAI ENERGY',ln=1,align='C')
+        
+        pdf.add_page()
+        
+        pdf.set_text_color(0,0,0)
+        pdf.image("Imagens/fundoPDF.jpg",0,0,w=230)
+        pdf.image("Imagens/dubai.png",83,15,w=40,h=20)
+        pdf.set_font('Times','B',size=15)
+        pdf.cell(190,70,'DADOS PARA O SEU FINANCIAMENTO SOLAR',ln=1,align='C')
+        pdf.set_font('arial','B',size=10)
+        
         if Pessoa == 'Fisica':
+
+            pdf.text(20,60, txt='PESSOA FÍSICA')
+            pdf.text(20,70, txt='NOME COMPLETO:_______________________________')
+            pdf.text(20,80, txt='RG:_______________________________')
+            pdf.text(20,90, txt='CPF:_______________________________')
+            pdf.text(20,100, txt='DATA DE NASCIMENTO:____/___/______')
+            pdf.text(20,110, txt='CELULAR: (__) 9______-__________')
+            pdf.text(20,120, txt='EMAIL PESSOAL:_________________')
+            pdf.text(20,130, txt='NOME DA MÃE:_______________________________________________')
+            pdf.text(20,140, txt='ESTADO CIVIL:___________________________________')
+            pdf.text(20,150, txt='PROFISSÃO:___________________________________')
+            pdf.text(20,160, txt='RENDA MÉDIA LIQUIDA: R$:___________________________________')
+            pdf.text(20,170, txt='ESTADO:________________________________')
+            pdf.text(20,180, txt='CIDADE:________________________________')
+            pdf.text(20,190, txt='BAIRRO:________________________________')
+            pdf.text(20,200, txt='ENDEREÇO:______________________________')
+            pdf.text(20,210, txt='CEP:_____________-_____________')
+            pdf.text(20,220, txt='POTÊNCIA DO SISTEMA:_____________kW')
+            pdf.text(20,230, txt='PRODUÇÃO MÉDIA MENSAL:_________________kWh')
+            pdf.text(20,240, txt='TIPO DE ESTRUTURA:___________________')
+            pdf.text(20,250, txt='OBSERVAÇÃO:___________________________________________________')
+            pdf.text(20,270, txt='OBS.: comprovantes de renda (HOLERITE, EXTRATO BANCARIO, IR ETC.)')
+           
             
-            pdf.image("Imagens/UltimaPagina.jpg",5,0,w=200)
         else:
-
-            pdf.image("Imagens/Juridica.jpg",5,0,w=200)
-
-        html = create_download_link(pdf.output(dest="S").encode("latin-1"), Nome+"_DubaiEnergy")
-
+            
+            pdf.text(20,60, txt='PESSOA JURÍDICA')
+            pdf.text(20,68, txt='NOME FANTASIA:_______________________________')
+            pdf.text(20,75, txt='CNPJ:_______________________________')
+            pdf.text(20,83, txt='SETOR DE ATUAÇÃO:_______________________________')
+            pdf.text(20,91, txt='FATURAMENTO MÉDIO MENSAL:____________________')
+            pdf.text(20,99, txt='TELEFONE:(__)9__________-___________')
+            pdf.text(20,107, txt='E-MAIL CORPORATIVO:_______________________________')
+            pdf.text(20,115, txt='DADOS DO(S) REPRESENTANTES(S) LEGAIS')
+            pdf.text(20,123, txt='NOME COMPLETO:_______________________________')
+            pdf.text(20,131, txt='RG:_______________________________')
+            pdf.text(20,139, txt='CPF:_______________________________')
+            pdf.text(20,147, txt='DATA DE NASCIMENTO:____/___/______')
+            pdf.text(20,155, txt='CELULAR: (__) 9______-__________')
+            pdf.text(20,163, txt='EMAIL PESSOAL:_________________')
+            pdf.text(20,171, txt='NOME DA MÃE:_______________________________________________')
+            pdf.text(20,179, txt='ESTADO CIVIL:___________________________________')
+            pdf.text(20,187, txt='PROFISSÃO:___________________________________')
+            pdf.text(20,195, txt='RENDA MÉDIA LIQUIDA: R$:___________________________________')
+            pdf.text(20,203, txt='ESTADO:________________________________')
+            pdf.text(20,211, txt='CIDADE:________________________________')
+            pdf.text(20,219, txt='BAIRRO:________________________________')
+            pdf.text(20,227, txt='ENDEREÇO:______________________________')
+            pdf.text(20,235, txt='CEP:_____________-_____________')
+            pdf.text(20,243, txt='POTÊNCIA DO SISTEMA:_____________kW')
+            pdf.text(20,251, txt='PRODUÇÃO MÉDIA MENSAL:_________________kWh')
+            pdf.text(20,259, txt='TIPO DE ESTRUTURA:___________________')
+            pdf.text(20,267, txt='OBSERVAÇÃO:___________________________________________________')
+            pdf.text(20,277, txt='OBS.: comprovantes de renda (HOLERITE, EXTRATO BANCARIO, IR ETC.)')
+            
+            
         st.markdown(html, unsafe_allow_html=True)
 
         bar.progress(100)
