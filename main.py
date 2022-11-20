@@ -156,13 +156,13 @@ def show_logout_page():
         st.sidebar.button ("Sair", key="logout", on_click=LoggedOut_Clicked)
     
 def LoggedIn_Clicked(userName, password):
-
-    comando = f'SELECT * FROM usuario WHERE user = "{userName}"'
-    cursor.execute(comando)
-    resultado = cursor.fetchall()
-    user = resultado[0][1]
-    senha = resultado[0][3]
     try:
+        comando = f'SELECT * FROM usuario WHERE user = "{userName}"'
+        cursor.execute(comando)
+        resultado = cursor.fetchall()
+        user = resultado[0][1]
+        senha = resultado[0][3]
+    
      
         if userName == "admin" and password == senha:
 
