@@ -113,7 +113,7 @@ def main():
     carencia1 = st.selectbox("Carência (Mês)",carencia)
     
     export_as_pdf = st.button("Gerar PDF")
-
+    st.stop()
     if export_as_pdf:
         bar = st.progress(0)
         
