@@ -163,19 +163,17 @@ def LoggedIn_Clicked(userName, password):
     resultado = cursor.fetchall()
     user = resultado[0][1]
     senha = resultado[0][3]
-    teste = user
-
-    
+   
     if userName != user and password != senha:
     
         st.session_state['loggedIn'] = False
         st.error("Usuário ou senha inválido!")
     
-    if userName == "admin" and password == senha:
+    elif userName == "admin" and password == senha:
         
         st.session_state['key'] = True
     
-    if userName == user and password == senha:
+    elif userName == user and password == senha:
         
         st.session_state['loggedIn'] = True
          
