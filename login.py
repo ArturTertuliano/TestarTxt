@@ -656,9 +656,9 @@ def main():
         pdf.text(25,200,txt= 'Autorização para vistoria técnica')
 
         pdf.set_font('Times','B',size=12)
-        pdf.text(15,15,txt='5 - GARANTIA E RESPONSABILIDADE LEGAL')
-        pdf.text(15,25,txt='5.1 - GARANTIA DOS EQUIPAMENTOS')
-        pdf.text(15,80,txt='5.2 - RESPONSABILIDADE LEGAL')
+        pdf.text(15,15,txt='4 - GARANTIA E RESPONSABILIDADE LEGAL')
+        pdf.text(15,25,txt='4.1 - GARANTIA DOS EQUIPAMENTOS')
+        pdf.text(15,80,txt='4.2 - RESPONSABILIDADE LEGAL')
         
         if Inversor1 == 'Micro Inversor':
             
