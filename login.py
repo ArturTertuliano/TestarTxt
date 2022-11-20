@@ -681,14 +681,14 @@ def main():
         
         pdf.set_text_color(255,255,255)
         pdf.set_font('arial', size=10)
-        pdf.text(50,70,txt='Valor do Financiamento: ')
-        pdf.text(50,75,txt='R$ '+str(thousand_sep(CapitalFixo)).replace(',','.')+',00')
+        pdf.text(40,70,txt='Valor do Financiamento: ')
+        pdf.text(40,75,txt='R$ '+str(thousand_sep(CapitalFixo)).replace(',','.')+',00')
 
-        pdf.text(105,70,txt='Entrada de: ')
-        pdf.text(105,75,txt='R$ 0,00 ')
+        pdf.text(95,70,txt='Entrada de: ')
+        pdf.text(95,75,txt='R$ 0,00 ')
 
-        pdf.text(140,70,txt='Carência de:')
-        pdf.text(140,75,txt=str(int(carencia1)*30)+' Dias ('+str(carencia1)+' Meses) ')
+        pdf.text(130,70,txt='Carência de:')
+        pdf.text(130,75,txt=str(int(carencia1)*30)+' Dias ('+str(carencia1)+' Meses) ')
         
         pdf.set_text_color(0,0,0)
 
@@ -697,15 +697,15 @@ def main():
 
         
 
-        pdf.text(60,105,txt='Prazo')
-        pdf.text(138,105,txt='Parcela')
-        pdf.text(135,110,txt='sem seguro')
+        pdf.text(50,105,txt='Prazo')
+        pdf.text(128,105,txt='Parcela')
+        pdf.text(125,110,txt='sem seguro')
 
-        pdf.text(60,120,txt='12x ')
-        pdf.text(60,130,txt='24x ')
-        pdf.text(60,140,txt='36x ')
-        pdf.text(60,150,txt='60x ')
-        pdf.text(60,160,txt='72x ')
+        pdf.text(50,120,txt='12x ')
+        pdf.text(50,130,txt='24x ')
+        pdf.text(50,140,txt='36x ')
+        pdf.text(50,150,txt='60x ')
+        pdf.text(50,160,txt='72x ')
 
         comando = f'SELECT * FROM parcelas'
         cursor.execute(comando)
@@ -716,7 +716,7 @@ def main():
         l = 120
         for i in range(5):
             Valor = (CapitalFixo*(juros[i]/100))/(1-((1+(juros[i]/100))**parcelas[i]))
-            pdf.text(135,l,txt=str(thousand_sep(round(Valor))).replace(',','.')+',00')
+            pdf.text(125,l,txt=str(thousand_sep(round(Valor))).replace(',','.')+',00')
             l=l+10
 
 
