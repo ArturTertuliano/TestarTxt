@@ -103,8 +103,11 @@ def main():
             for i in range(len(resultado)):
                 fa.append(resultado[i][1])
 
-
+        
             Cidade = st.selectbox("Selecione uma Cidade",lista)
+            
+    with st.form("my_form2"):
+        
         Potencia = st.selectbox("Selecione um Módulo",fa)
         TipoLigacao1 = st.selectbox("Tipo de ligação",TipoLigacao)
         ConsumoMensal = st.text_input("Digite o consumo mensal (kWh) *")
