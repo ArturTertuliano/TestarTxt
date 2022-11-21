@@ -73,7 +73,7 @@ def main():
         Cep = st.text_input("CEP")
         Endereco = st.text_input("Endereço")
         Estados = st.selectbox("Selecione um Estado",UF)
-        lugar = st.form_submit_button("LIBERAR CIDADES")
+        lugar = st.form_submit_checkbox("LIBERAR CIDADES")
         if lugar:
             with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
 
@@ -106,15 +106,15 @@ def main():
         
             Cidade = st.selectbox("Selecione uma Cidade",lista)
             
-    with st.form("my_form2"):
+    
         
-        Potencia = st.selectbox("Selecione um Módulo",fa)
-        TipoLigacao1 = st.selectbox("Tipo de ligação",TipoLigacao)
-        ConsumoMensal = st.text_input("Digite o consumo mensal (kWh) *")
-        Porcentagem = st.text_input("Digite a porcentagem desejada *")
-        Estrutura1 = st.selectbox("Selecione uma estrutura",Estrutura)
-        Inversor1 = st.selectbox("Selecione um inversor",Inversor)
-        carencia1 = st.selectbox("Carência (Mês)",carencia)
+            Potencia = st.selectbox("Selecione um Módulo",fa)
+            TipoLigacao1 = st.selectbox("Tipo de ligação",TipoLigacao)
+            ConsumoMensal = st.text_input("Digite o consumo mensal (kWh) *")
+            Porcentagem = st.text_input("Digite a porcentagem desejada *")
+            Estrutura1 = st.selectbox("Selecione uma estrutura",Estrutura)
+            Inversor1 = st.selectbox("Selecione um inversor",Inversor)
+            carencia1 = st.selectbox("Carência (Mês)",carencia)
 
         #export_as_pdf = st.button("Gerar PDF")
         export_as_pdf = st.form_submit_button("Gerar PDF")
