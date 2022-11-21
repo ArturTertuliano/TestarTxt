@@ -72,7 +72,7 @@ def main():
         Telefone = st.text_input("Telefone")
         Cep = st.text_input("CEP")
         Endereco = st.text_input("Endereço")
-        Estados = st.selectbox("Selecione um Estado",UF,format_func=special_internal_function)
+        Estados = st.selectbox("Selecione um Estado",UF,submitted=True)
 
         with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
 
@@ -103,7 +103,7 @@ def main():
             fa.append(resultado[i][1])
 
 
-        Cidade = st.selectbox("Selecione uma Cidade",lista,format_func=special_internal_function)
+        Cidade = st.selectbox("Selecione uma Cidade",lista)
         Potencia = st.selectbox("Selecione um Módulo",fa)
         TipoLigacao1 = st.selectbox("Tipo de ligação",TipoLigacao)
         ConsumoMensal = st.text_input("Digite o consumo mensal (kWh) *")
