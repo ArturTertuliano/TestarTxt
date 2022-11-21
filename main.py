@@ -183,9 +183,9 @@ def show_login_page():
   
         if st.session_state['loggedIn'] == False:
         
-            userName = st.text_input ("Usuário",key="user")
+            userName = st.text_input ("Usuário")
             password = st.text_input ("Senha", type="password")
-            teste3 = st.button ("Entrar", key = "entrar", on_click=LoggedIn_Clicked, args= (userName, password))
+            teste3 = st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
            
 
 def finish():
