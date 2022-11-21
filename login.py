@@ -37,7 +37,26 @@ def create_download_link(val, filename):
         b64 = base64.b64encode(val)  # val looks like b'...'
         return f'<a href="data:application/octet-stream;base64,{b64.decode()}" download="{filename}.pdf">Download file</a>'
 
+"""def cidades():
+    Estados = st.selectbox("Selecione um Estado",UF)
+    with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
 
+        nome = arquivo.readlines()
+    verificar = 0
+
+    for i in nome:
+        i = i[:-2]
+        i = i.split(', ') 
+
+        if Estados == i[1]:
+            lista.append(i[2])
+            verificar = 1
+            continue
+        elif verificar == 0:
+            continue
+
+        if verificar == 1:
+            break"""
 
 def main():
     
@@ -53,9 +72,37 @@ def main():
     comando = f'SELECT * FROM tarifa'
     cursor.execute(comando)
     resultado = cursor.fetchall()
+
+    UF = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
+    lista = []
+
+    Estados = st.selectbox("Selecione um Estado",UF)
+        
+    with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
+
+        nome = arquivo.readlines()
+
+    verificar = 0
+
+    for i in nome:
+        i = i[:-2]
+        i = i.split(', ') 
+
+        if Estados == i[1]:
+            lista.append(i[2])
+            verificar = 1
+            continue
+        elif verificar == 0:
+            continue
+
+        if verificar == 1:
+            break
+
+    Cidade = st.selectbox("Selecione uma Cidade",lista)
+
     with st.form("my_form"):
-        UF = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
-        lista = []
+
+        
         Inversor = ['Inversor','Micro Inversor']
         Estrutura = ['Sem Estrutura','Colonial','Fibrocimento','Mini Trilho','Laje','Solo','']
         TipoPessoa = ['','Juridica','Fisica']
@@ -64,7 +111,7 @@ def main():
         RendimentoSistema = 0.845
         TipoLigacao, ContaLuz, Tarifa= ['MONOFASICO','BIFASICO','TRIFASICO'],70, resultado[0][1]
 
-
+        
         Pessoa = st.selectbox("Selecione o tipo de pessoa *",TipoPessoa)
         Cpf = st.text_input("CPF/CNPJ")
         Nome = st.text_input("Nome do Cliente *")
@@ -72,49 +119,44 @@ def main():
         Telefone = st.text_input("Telefone")
         Cep = st.text_input("CEP")
         Endereco = st.text_input("Endereço")
-        Estados = st.selectbox("Selecione um Estado",UF)
-        lugar = st.form_submit_checkbox("LIBERAR CIDADES")
-        if lugar:
-            with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
-
-                nome = arquivo.readlines()
-
-            verificar = 0
-
-            for i in nome:
-                i = i[:-2]
-                i = i.split(', ') 
-
-                if Estados == i[1]:
-                    lista.append(i[2])
-                    verificar = 1
-                    continue
-                elif verificar == 0:
-                    continue
-
-                if verificar == 1:
-                    break
-
-
-            comando = f'SELECT * FROM placas'
-            cursor.execute(comando)
-            resultado = cursor.fetchall()
-            fa = []
-            for i in range(len(resultado)):
-                fa.append(resultado[i][1])
-
+        """Estados = st.selectbox("Selecione um Estado",UF)
         
-            Cidade = st.selectbox("Selecione uma Cidade",lista)
-            
-    
+        with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
+
+            nome = arquivo.readlines()
+
+        verificar = 0
+
+        for i in nome:
+            i = i[:-2]
+            i = i.split(', ') 
+
+            if Estados == i[1]:
+                lista.append(i[2])
+                verificar = 1
+                continue
+            elif verificar == 0:
+                continue
+
+            if verificar == 1:
+                break
+
+        Cidade = st.selectbox("Selecione uma Cidade",lista)"""
         
-            Potencia = st.selectbox("Selecione um Módulo",fa)
-            TipoLigacao1 = st.selectbox("Tipo de ligação",TipoLigacao)
-            ConsumoMensal = st.text_input("Digite o consumo mensal (kWh) *")
-            Porcentagem = st.text_input("Digite a porcentagem desejada *")
-            Estrutura1 = st.selectbox("Selecione uma estrutura",Estrutura)
-            Inversor1 = st.selectbox("Selecione um inversor",Inversor)
-            carencia1 = st.selectbox("Carência (Mês)",carencia)
+        comando = f'SELECT * FROM placas'
+        cursor.execute(comando)
+        resultado = cursor.fetchall()
+        fa = []
+        for i in range(len(resultado)):
+            fa.append(resultado[i][1])
+
+        Potencia = st.selectbox("Selecione um Módulo",fa)
+        TipoLigacao1 = st.selectbox("Tipo de ligação",TipoLigacao)
+        ConsumoMensal = st.text_input("Digite o consumo mensal (kWh) *")
+        Porcentagem = st.text_input("Digite a porcentagem desejada *")
+        Estrutura1 = st.selectbox("Selecione uma estrutura",Estrutura)
+        Inversor1 = st.selectbox("Selecione um inversor",Inversor)
+        carencia1 = st.selectbox("Carência (Mês)",carencia)
 
         #export_as_pdf = st.button("Gerar PDF")
         export_as_pdf = st.form_submit_button("Gerar PDF")
