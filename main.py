@@ -136,12 +136,17 @@ def Admin():
     AlterarValores5 = st.button("ADICIONAR USUÁRIO")
 
     if AlterarValores5:
-
-        comando = f'INSERT INTO usuario (user,email,senha,nome,telefone) VALUES ("{user}","{email}","{passw}","{nc}","{Telefone}")'
-        cursor.execute(comando)
-        conexao.commit()
+        if user != '' or passw != '' or nc != '':
+            comando = f'INSERT INTO usuario (user,email,senha,nome,telefone) VALUES ("{user}","{email}","{passw}","{nc}","{Telefone}")'
+            cursor.execute(comando)
+            conexao.commit()
+            st.success("Usuário adicionado com sucesso!")
+        else:
+            
+            st.error("Algum dado obrigatório não foi fornecido!")
+            
         
-        st.success("Usuário adicionado com sucesso!")
+        
         
 def LoggedOut_Clicked():
     if st.session_state['loggedIn']:
