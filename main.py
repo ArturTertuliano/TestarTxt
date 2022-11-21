@@ -141,7 +141,7 @@ def Admin():
         cursor.execute(comando)
         conexao.commit()
         
-        st.success("Tarifa alterada com sucesso!")
+        st.success("Usuário adicionado com sucesso!")
         
 def LoggedOut_Clicked():
     if st.session_state['loggedIn']:
@@ -151,12 +151,19 @@ def LoggedOut_Clicked():
     if st.session_state['key']:
         st.session_state['key'] = False
     
-def show_logout_page():
+def show_logout_page1():
 
-    with logOutSection:
+    with logOutSection1:
 
         st.sidebar.title("Sair da sua conta")
         st.sidebar.button ("Sair", key="logout", on_click=LoggedOut_Clicked)
+
+def show_logout_page2():
+
+    with logOutSection2:
+
+        st.sidebar.title("Sair da sua conta")
+        st.sidebar.button ("Sair", key="logout2", on_click=LoggedOut_Clicked)
     
 def LoggedIn_Clicked(userName, password):
     try:
@@ -188,7 +195,7 @@ def show_login_page():
         
             userName = st.text_input ("Usuário")
             password = st.text_input ("Senha", type="password")
-            teste3 = st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
+            st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
            
 
 def finish():
@@ -198,7 +205,8 @@ def finish():
 headerSection = st.container()
 mainSection = st.container()
 loginSection = st.container()
-logOutSection = st.container()
+logOutSection1 = st.container()
+logOutSection2 = st.container()
 CadastrarSection = st.container()
 
 
@@ -212,8 +220,8 @@ with headerSection:
         st.session_state['key'] = False
     
     else:
-        if st.session_state['key']:
-            show_logout_page()    
+        if st.session_state['key'] == True:
+            show_logout_page2()    
             Admin()
         else:
             show_login_page()
@@ -222,9 +230,9 @@ with headerSection:
         st.session_state['loggedIn'] = False
         show_login_page()
     else:
-        if st.session_state['loggedIn']:
+        if st.session_state['loggedIn'] == True and st.session_state['key'] == False:
         
-            show_logout_page()    
+            show_logout_page1()    
             show_main_page()
         
 tabela.to_csv(io.StringIO(s.decode('utf-8')),index = False)         
