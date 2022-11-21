@@ -152,8 +152,8 @@ def show_logout_page():
 
     with logOutSection:
 
-        teste1 = st.sidebar.title("Sair da sua conta")
-        teste2 = st.sidebar.button ("Sair", key="logout", on_click=LoggedOut_Clicked)
+        st.sidebar.title("Sair da sua conta")
+        st.sidebar.button ("Sair", key="logout", on_click=LoggedOut_Clicked)
     
 def LoggedIn_Clicked(userName, password):
     try:
