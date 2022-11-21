@@ -136,7 +136,7 @@ def Admin():
     AlterarValores5 = st.button("ADICIONAR USUÁRIO")
 
     if AlterarValores5:
-        if user != '' or passw != '' or nc != '':
+        if user == '' or passw == '' or nc == '':
             
             st.error("Algum dado obrigatório não foi fornecido!")
             
