@@ -73,7 +73,7 @@ def main():
         Cep = st.text_input("CEP")
         Endereco = st.text_input("Endereço")
         Estados = st.selectbox("Selecione um Estado",UF)
-        lugar = st.form_submit_button("Gerar PDF")
+        lugar = st.form_submit_button("LIBERAR CIDADES")
         if lugar:
             with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
 
