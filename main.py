@@ -181,22 +181,26 @@ def LoggedIn_Clicked(userName, password):
         if userName == user and password == senha:
             lg.a = user
             st.session_state['loggedIn'] = True
+
+        if userName != user or password != senha:
+            st.session_state['loggedIn'] = False
+            st.error("Usuário ou senha inválido!")
             
     except:
-        
-          st.session_state['loggedIn'] = False
-          st.error("Usuário ou senha inválido!")
+        pass
+          
         
 def show_login_page():
-    global userName
+    
     with loginSection:
-  
-        if st.session_state['loggedIn'] == False:
         
-            userName = st.text_input ("Usuário")
-            password = st.text_input ("Senha", type="password")
-            st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
-           
+        if st.session_state['loggedIn'] == False:
+            with st.form("my_form3"):
+                userName = st.text_input ("Usuário")
+                password = st.text_input ("Senha", type="password")
+                st.form_submit_button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
+                
+                
 
 def finish():
     cursor.close()
@@ -236,10 +240,3 @@ with headerSection:
             show_main_page()
         
 tabela.to_csv(io.StringIO(s.decode('utf-8')),index = False)         
-
-  
-
-
-   
-
-   
