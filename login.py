@@ -72,38 +72,39 @@ def main():
         Telefone = st.text_input("Telefone")
         Cep = st.text_input("CEP")
         Endereco = st.text_input("Endereço")
-        Estados = st.selectbox("Selecione um Estado",UF,submitted=True)
+        Estados = st.selectbox("Selecione um Estado",UF)
+        lugar = st.form_submit_button("Gerar PDF")
+        if lugar:
+            with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
 
-        with open("Text/Cidades_Estados.txt","r", encoding = "utf-8") as arquivo:
+                nome = arquivo.readlines()
 
-            nome = arquivo.readlines()
+            verificar = 0
 
-        verificar = 0
+            for i in nome:
+                i = i[:-2]
+                i = i.split(', ') 
 
-        for i in nome:
-            i = i[:-2]
-            i = i.split(', ') 
+                if Estados == i[1]:
+                    lista.append(i[2])
+                    verificar = 1
+                    continue
+                elif verificar == 0:
+                    continue
 
-            if Estados == i[1]:
-                lista.append(i[2])
-                verificar = 1
-                continue
-            elif verificar == 0:
-                continue
-
-            if verificar == 1:
-                break
-
-
-        comando = f'SELECT * FROM placas'
-        cursor.execute(comando)
-        resultado = cursor.fetchall()
-        fa = []
-        for i in range(len(resultado)):
-            fa.append(resultado[i][1])
+                if verificar == 1:
+                    break
 
 
-        Cidade = st.selectbox("Selecione uma Cidade",lista)
+            comando = f'SELECT * FROM placas'
+            cursor.execute(comando)
+            resultado = cursor.fetchall()
+            fa = []
+            for i in range(len(resultado)):
+                fa.append(resultado[i][1])
+
+
+            Cidade = st.selectbox("Selecione uma Cidade",lista)
         Potencia = st.selectbox("Selecione um Módulo",fa)
         TipoLigacao1 = st.selectbox("Tipo de ligação",TipoLigacao)
         ConsumoMensal = st.text_input("Digite o consumo mensal (kWh) *")
