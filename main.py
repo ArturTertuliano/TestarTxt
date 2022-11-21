@@ -144,9 +144,12 @@ def Admin():
         st.success("Tarifa alterada com sucesso!")
         
 def LoggedOut_Clicked():
-    
-    st.session_state['loggedIn'] = False
-    st.session_state['key'] = False
+    if st.session_state['loggedIn']:
+        
+        st.session_state['loggedIn'] = False
+        
+    if st.session_state['key']:
+        st.session_state['key'] = False
     
 def show_logout_page():
 
