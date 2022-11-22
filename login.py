@@ -113,9 +113,9 @@ def main():
         carencia1 = st.selectbox("Carência (Mês)",carencia)
 
         export_as_pdf = st.button("Gerar PDF")
-
-        if Pessoa != '' and Nome !='' and ConsumoMensal != '' and Porcentagem != '': 
-            if export_as_pdf:
+        if export_as_pdf:
+            if Pessoa != '' and Nome !='' and ConsumoMensal != '' and Porcentagem != '': 
+            
                 bar = st.progress(0)
 
                 Digite = Estados+", "+ Cidade
