@@ -812,8 +812,8 @@ def main():
                 cursor.close()
                 conexao.close()
             else:
-                st.error("Alguma informação não foi fornecida!")
-                st.error("Verifique os dados fornecidos acima.")
+                st.error("Alguma informação obrigatória não foi fornecida!")
+                st.error("Verifique novamente os dados acima.")
                 cursor.close()
                 conexao.close()
     except:
