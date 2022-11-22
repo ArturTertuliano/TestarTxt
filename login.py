@@ -818,4 +818,4 @@ def main():
                 conexao.close()
     except:
         st.error("Ocorreu algum erro!")
-        st.error("Reinicie a plataforma.")"""
+        st.error("Reinicie a plataforma.")
