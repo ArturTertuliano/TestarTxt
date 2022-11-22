@@ -138,7 +138,7 @@ def Admin():
     if AlterarValores5:
         if user == '' or passw == '' or nc == '':
             
-            st.error("Algum dado obrigatório não foi fornecido!")
+            st.error("Alguma informação obrigatório não foi fornecido!")
             
         else:
            
