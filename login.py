@@ -437,7 +437,7 @@ def main():
                 Rotated_image = imutils.rotate(virar, angle=45) 
                 cv2.imshow("Rotated", Rotated_image)
                 
-                pdf.image("Imagens/marca.png",100,100,,w=40,h=20)
+                pdf.image("Imagens/marca.png",100,100,w=40,h=20)
                 bar.progress(40)
 
 
