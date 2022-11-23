@@ -736,9 +736,9 @@ def main():
                 pdf.image("Imagens/fundoPDF.jpg",0,0,w=230)
                 pdf.image("Imagens/dubai.png",83,15,w=40,h=20)
                 pdf.set_font('Times','B',size=15)
-                pdf.image("Imagens/obras.png",15,50,w=175,h= 175)
+                pdf.image("Imagens/obras.png",15,60,w=175,h= 175)
                 pdf.cell(190,70,'ALGUMAS INSTALAÇÕES DUBAI ENERGY',ln=1,align='C')
-                #pdf.image("Imagens/dubai.png",83,15,w=40,h=20)
+                
 
                 pdf.add_page()
 
