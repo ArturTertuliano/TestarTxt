@@ -432,10 +432,8 @@ def main():
                 pdf.text(15, 185,txt=' ESTIMATIVA DE GERAÇÃO VS CONSUMO')
                 pdf.text(15,120,txt= '1 - CENÁRIO DE CONSUMO/DIMENSIONAMENTO')
                 
-                Original_Image = Image.open("Imagens/marca.png") 
-                Original_Image = Original_Image.rotate(45)
-                Original_Image.save("Imagens/marca.png", "PNG") 
-                pdf.image("Imagens/marca.png",80,150,w=40,h=20)
+               
+                pdf.image("Imagens/marca2.png",80,150,w=40,h=20)
                 
                 bar.progress(40)
 
