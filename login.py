@@ -435,7 +435,7 @@ def main():
                 Original_Image = Image.open("Imagens/marca.png") 
                 rotated_image1 = Original_Image.rotate(45)
                 
-                pdf.image("Imagens/marca.png",100,100,w=40,h=20)
+                pdf.image(rotated_image1,100,100,w=40,h=20)
                 bar.progress(40)
 
 
