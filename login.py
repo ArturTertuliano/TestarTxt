@@ -433,9 +433,10 @@ def main():
                 pdf.text(15,120,txt= '1 - CENÁRIO DE CONSUMO/DIMENSIONAMENTO')
                 
                 Original_Image = Image.open("Imagens/marca.png") 
-                rotated_image1 = Original_Image.rotate(45)
+                Original_Image = Original_Image.rotate(45)
+                Original_Image.save("Imagens/marca.png", "PNG") 
+                pdf.image("Imagens/marca.png",80,150,w=40,h=20)
                 
-                pdf.image(rotated_image1,100,100,w=40,h=20)
                 bar.progress(40)
 
 
