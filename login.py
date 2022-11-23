@@ -9,8 +9,7 @@ from PIL import Image
 import pandas as pd
 import mysql.connector
 import main as mn
-import cv2  
-import imutils 
+
 
 a = ''
 
@@ -433,9 +432,8 @@ def main():
                 pdf.text(15, 185,txt=' ESTIMATIVA DE GERAÇÃO VS CONSUMO')
                 pdf.text(15,120,txt= '1 - CENÁRIO DE CONSUMO/DIMENSIONAMENTO')
                 
-                virar = cv2.imread(r"Imagens/marca.png") 
-                Rotated_image = imutils.rotate(virar, angle=45) 
-                cv2.imshow("Rotated", Rotated_image)
+                Original_Image = Image.open("Imagens/marca.png") 
+                rotated_image1 = Original_Image.rotate(45)
                 
                 pdf.image("Imagens/marca.png",100,100,w=40,h=20)
                 bar.progress(40)
