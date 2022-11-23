@@ -734,7 +734,7 @@ def main():
                 pdf.set_text_color(0,0,0)
 
                 pdf.set_font('Times','B',size=15)
-                pdf.image("Imagens/obras.jpg",0,0,w=210)
+                pdf.image("Imagens/obras.png",0,0,w=210)
                 #pdf.cell(190,70,'ALGUMAS INSTALAÇÕES DUBAI ENERGY',ln=1,align='C')
                 #pdf.image("Imagens/dubai.png",83,15,w=40,h=20)
 
