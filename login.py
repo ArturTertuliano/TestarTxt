@@ -671,7 +671,7 @@ def main():
                 pdf.image("Imagens/fundo.png",40,60,w=130,h=50)
                 pdf.image("Imagens/fundo-cinza.png",40,80,w=130,h=85)
 
-                pdf.set_font('Times','B',size=20)
+                pdf.set_font('Times','B',size=15)
 
 
 
@@ -732,9 +732,11 @@ def main():
 
                 pdf.add_page()
                 pdf.set_text_color(0,0,0)
-
+                
+                pdf.image("Imagens/fundoPDF.jpg",0,0,w=230)
+                pdf.image("Imagens/dubai.png",83,15,w=40,h=20)
                 pdf.set_font('Times','B',size=15)
-                pdf.image("Imagens/obras.png",0,0,w=210)
+                pdf.image("Imagens/obras.png",10,20,w=200)
                 #pdf.cell(190,70,'ALGUMAS INSTALAÇÕES DUBAI ENERGY',ln=1,align='C')
                 #pdf.image("Imagens/dubai.png",83,15,w=40,h=20)
 
