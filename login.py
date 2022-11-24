@@ -433,7 +433,7 @@ def main():
                 pdf.text(15,120,txt= '1 - CENÁRIO DE CONSUMO/DIMENSIONAMENTO')
 
 
-                pdf.image("Imagens/marca2.png",80,150,w=40,h=20)
+                pdf.image("Imagens/marca2.png",80,150,w=60,h=40)
 
                 bar.progress(40)
 
