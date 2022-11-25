@@ -204,7 +204,8 @@ def show_login_page():
             with st.form("my_form3"):
                 userName = st.text_input ("Usuário")
                 password = st.text_input ("Senha", type="password")
-                st.form_submit_button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
+                st.button ("Entrar", on_click=LoggedIn_Clicked, args= (userName, password))
+                
                 
                 
 
