@@ -433,7 +433,7 @@ def main():
                 pdf.text(15,120,txt= '1 - CENÁRIO DE CONSUMO/DIMENSIONAMENTO')
 
 
-                pdf.image("Imagens/marca2.png",80,150,w=60,h=40)
+               
 
                 bar.progress(40)
 
@@ -545,7 +545,7 @@ def main():
                 pdf.set_text_color(0,0,0)
                 pdf.set_xy(15,150)
                 pdf.multi_cell(175,5, 'Há dois indicadores no gráfico abaixo. O primeiro corresponde a economia anual com energia elétrica com o sistema fotovoltaico. O segundo indicador, corresponde a valorização do capital investido no sistema fotovoltaico, se aplicado a um investimento bancário à uma taxa mínima de atratividade (TMA).',border = 0)
-                pdf.image("Imagens/marca2.png",80,150,w=60,h=40)
+                
 
 
                 bar.progress(50)
