@@ -118,6 +118,14 @@ def main():
         desconto1 = st.selectbox("Desconto %",desconto)
 
         export_as_pdf = st.button("Gerar PDF")
+        if inclinacao == 'A':
+            RendimentoSistema = RendimentoSistema * A
+        elif inclinacao == 'B':
+            RendimentoSistema = RendimentoSistema * B
+        elif inclinacao == 'C':
+            RendimentoSistema = RendimentoSistema * C
+        elif inclinacao == 'D':
+            RendimentoSistema = RendimentoSistema * D
         if export_as_pdf:
             if Pessoa != '' and Nome !='' and ConsumoMensal != '' and Porcentagem != '': 
 
