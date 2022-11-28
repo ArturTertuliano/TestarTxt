@@ -20,10 +20,10 @@ div.stButton > button:first-child {
 
 """
 conexao = mysql.connector.connect(
-    host = 'sql10.freesqldatabase.com',
-    user ='sql10579080',
-    password='qsCRMIUtyk',
-    database='sql10579080',
+    host = 'dubaienergy.com.br',
+    user ='u251704477_DubaiEnergy',
+    password='@Dubai102102',
+    database='u251704477_Dubai',
 )
 
 cursor = conexao.cursor()
