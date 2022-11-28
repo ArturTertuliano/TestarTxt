@@ -554,11 +554,11 @@ def main():
                 pdf.set_font('arial',size=7)
                 pdf.text(150,125,txt= 'Valor total:  R$ '+ str(Capital).replace(',','.')+',00')
                 if desconto1 != 0:
-                    pdf.text(150,128,txt= 'Desconto:  R$')
+                    pdf.text(150,131,txt= 'Desconto:  R$ ')
                     pdf.set_text_color(255,0,0)
-                    pdf.text(155,128,txt= str(thousand_sep(round(desconto2))).replace(',','.')+',00')
+                    pdf.text(165,134,txt= str(thousand_sep(round(desconto2))).replace(',','.')+',00')
                     pdf.set_text_color(0,0,0)
-                    pdf.text(130,131,txt= 'Valor final:  R$ '+str(thousand_sep(round(CapitalFixo-desconto2))).replace(',','.')+',00')
+                    pdf.text(150,137,txt= 'Valor final:  R$ '+str(thousand_sep(round(CapitalFixo-desconto2))).replace(',','.')+',00')
                 pdf.set_font('arial',size=10)
 
 
