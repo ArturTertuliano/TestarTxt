@@ -263,7 +263,7 @@ def main():
                         CapitalFixo = -1 * CapitalInicial
                 
                 Capital = format(CapitalInicial* -1,',d')
-                if desconto2 != 0:
+                if desconto1 != 0:
                     desconto2 = (CapitalFixo*desconto1)/100
                 SimulacaoC = list(Table)
 
