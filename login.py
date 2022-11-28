@@ -58,7 +58,7 @@ def main():
         UF = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
         lista = []
         A,B,C,D = 1.05,1,0.9,0.8
-        inclinacao1 = [A,B,C,D]
+        inclinacao1 = ['A','B','C','D']
         Inversor = ['Inversor','Micro Inversor']
         Estrutura = ['Sem Estrutura','Colonial','Fibrocimento','Mini Trilho','Laje','Solo','']
         TipoPessoa = ['','Juridica','Fisica']
