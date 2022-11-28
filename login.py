@@ -115,7 +115,7 @@ def main():
         Estrutura1 = st.selectbox("Selecione uma estrutura",Estrutura)
         Inversor1 = st.selectbox("Selecione um inversor",Inversor)
         carencia1 = st.selectbox("Carência (Mês)",carencia)
-        desconto1 = st.selectbox("Desconto",str(desconto)+'%')
+        desconto1 = st.selectbox("Desconto %",desconto)
 
         export_as_pdf = st.button("Gerar PDF")
         if export_as_pdf:
