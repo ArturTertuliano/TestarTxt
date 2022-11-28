@@ -616,7 +616,7 @@ def main():
 
                 pdf.set_font('arial',size=10)
                 pdf.set_xy(15,135)
-                pdf.multi_cell(175,5, 'O termo amortização, também conhecido nos termos inglês como Payback e ROI (Return over Investment), indica o zeramento de valor investido pelo valor de retorno: '+str(PayBackAno)+' ano(s) e '+str(PayBackMes)+ ' mês(s). A partir desse momento toda economia com energia solar é livre para outros investimentos.',border = 0)
+                pdf.multi_cell(175,5, 'O termo amortização, também conhecido nos termos inglês como Payback (Tempo de retorno) e Return over Investment (Retorno do Investimento), indica o zeramento de valor investido pelo valor de retorno: '+str(PayBackAno)+' ano(s) e '+str(PayBackMes)+ ' mês(s). A partir desse momento toda economia com energia solar é livre para outros investimentos.',border = 0)
 
                 pdf.set_xy(15,155)
                 pdf.multi_cell(175,5, 'As estimativas de geração de energia, custos e economia foi baseada e projetada com base nas informações de consumo apresentadas pelo cliente e no estudo de irradiação solar local, tal como na análise da inflação da compra de energia elétrica.',border = 0)
