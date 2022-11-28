@@ -261,9 +261,10 @@ def main():
 
                         CapitalInicial = (round(-1*((((x1 * QtdPlacas) + x2) / x3))))
                         CapitalFixo = -1 * CapitalInicial
-
+                
                 Capital = format(CapitalInicial* -1,',d')
-
+                if desconto2 != 0:
+                    desconto2 = (CapitalFixo*desconto1)/100
                 SimulacaoC = list(Table)
 
                 MediaSimulacao = 0
@@ -549,7 +550,11 @@ def main():
                 pdf.set_text_color(255,0,0)
                 pdf.set_xy(20,120)
                 pdf.multi_cell(170,5, 'A geração pretendida poderá sofrer alterações considerando a inclinação do telhado e possíveis sombreamentos. Os módulos nessa proposta possuem eficiência de 2,31 % em transformação de energia luminosa em engergia elétrica.',border = 0)
-
+                pdf.set_text_color(0,0,0)
+                pdf.text(100,130,txt= 'Valor total:  R$ '+str(Capital))
+                if desconto2 != 0:
+                    pdf.text(100,135,txt= 'Desconto:  R$ '+str(desconto2))
+                    pdf.text(100,140,txt= 'Valor final:  R$ '+str(CapitalFixo - desconto2))
                 pdf.set_font('arial',size=10)
 
 
