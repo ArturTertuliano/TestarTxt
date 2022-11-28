@@ -551,10 +551,13 @@ def main():
                 pdf.set_xy(20,120)
                 pdf.multi_cell(170,5, 'A geração pretendida poderá sofrer alterações considerando a inclinação do telhado e possíveis sombreamentos. Os módulos nessa proposta possuem eficiência de 2,31 % em transformação de energia luminosa em engergia elétrica.',border = 0)
                 pdf.set_text_color(0,0,0)
-                pdf.text(100,130,txt= 'Valor total:  R$ '+ str(Capital).replace(',','.')+',00')
+                pdf.set_font('arial',size=8)
+                pdf.text(130,120,txt= 'Valor total:  R$ '+ str(Capital).replace(',','.')+',00')
                 if desconto1 != 0:
-                    pdf.text(100,135,txt= 'Desconto:  R$ '+str(round(desconto2)).replace(',','.')+',00')
-                    pdf.text(100,140,txt= 'Valor final:  R$ '+str(round(CapitalFixo - desconto2)).replace(',','.')+',00')
+                    pdf.set_text_color(255,0,0)
+                    pdf.text(130,125,txt= 'Desconto:  R$ '+str(thousand_sep(round(desconto2))).replace(',','.')+',00')
+                    pdf.set_text_color(0,0,0)
+                    pdf.text(130,130,txt= 'Valor final:  R$ '+str(thousand_sep(round(CapitalFixo-desconto2))).replace(',','.')+',00')
                 pdf.set_font('arial',size=10)
 
 
