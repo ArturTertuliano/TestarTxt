@@ -59,6 +59,7 @@ def main():
         lista = []
         A,B,C,D = 1.05,1,0.9,0.8
         inclinacao1 = ['A','B','C','D']
+        desconto = [0,1,2,3,4,5]
         Inversor = ['Inversor','Micro Inversor']
         Estrutura = ['Sem Estrutura','Colonial','Fibrocimento','Mini Trilho','Laje','Solo','']
         TipoPessoa = ['','Juridica','Fisica']
@@ -114,6 +115,7 @@ def main():
         Estrutura1 = st.selectbox("Selecione uma estrutura",Estrutura)
         Inversor1 = st.selectbox("Selecione um inversor",Inversor)
         carencia1 = st.selectbox("Carência (Mês)",carencia)
+        desconto1 = st.selectbox("Desconto",desconto)
 
         export_as_pdf = st.button("Gerar PDF")
         if export_as_pdf:
