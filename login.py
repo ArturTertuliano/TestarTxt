@@ -464,10 +464,15 @@ def main():
                 ax1.set_frame_on(False)
 
                 r1 = numpy.arange(len(car))
-
+                Cap = numpy.arange(len(car))
+    
+                Cap[0] = CapitalFixo
+                Cap[1] = round(CapitalFixo*1.04)
+                for i in range(2,25):
+                   Cap[i] = Cap[i-1]*1.04
 
                 plt.bar((r1+1) - largura/2,car,largura,color = "deepskyblue",label ="Economia de Energia Elétrica (R$)")
-                plt.bar((r1+1) + largura/2,CapitalFixo,largura,color = "darkblue",label = "Valorização do Capital Invest. a TMA (R$)")
+                plt.bar((r1+1) + largura/2,Cap,largura,color = "darkblue",label = "Valorização do Capital Invest. a TMA (R$)")
                 plt.xticks(var)
 
                 for i in range(len(var)):
