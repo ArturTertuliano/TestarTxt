@@ -155,7 +155,7 @@ def Admin():
         cursor.execute(comando)
         resultado = cursor.fetchall()
 
-        st.table(resultado)
+        st.dataframe(resultado)
             
             
 def LoggedOut_Clicked():
