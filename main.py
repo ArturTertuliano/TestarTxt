@@ -159,7 +159,7 @@ def Admin():
         resultado,
         columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
         )
-        st.dataframe(df)
+        st.table(df)
      
             
             
