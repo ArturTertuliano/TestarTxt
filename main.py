@@ -147,8 +147,17 @@ def Admin():
             conexao.commit()
             st.success("Usuário adicionado com sucesso!")
         
-        
-        
+    AlterarValores6 = st.button("PESQUISAR USUÁRIO")  
+    
+        if AlterarValores6:
+            
+            comando = f'SELECT * FROM cliente'
+            cursor.execute(comando)
+            resultado = cursor.fetchall()
+            
+            st.table(resultado)
+            
+            
 def LoggedOut_Clicked():
     if st.session_state['loggedIn']:
         
