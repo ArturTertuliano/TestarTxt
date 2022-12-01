@@ -180,7 +180,7 @@ def Admin():
             columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
             )
             st.table(df)
-       else:
+        else:
         
             comando = f'SELECT * FROM cliente WHERE nome = {BuscarCliente}'
             cursor.execute(comando)
