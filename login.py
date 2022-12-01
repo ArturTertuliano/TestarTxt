@@ -840,7 +840,8 @@ def main():
                 bar.progress(100)
                 
                 tempo = str(data.day)+' / '+str(data.month)+' / '+str(data.year)
-                comando = f'INSERT INTO cliente (nome, estado, cidade, geracao,preco,data) VALUES ("{Nome}","{Estados}","{Cidade}",{potenciaFotovoltaica},{CapitalFixo},"{tempo}")'
+                preco = str(Capital).replace(',','.')+',00'
+                comando = f'INSERT INTO cliente (nome, estado, cidade, geracao,preco,data) VALUES ("{Nome}","{Estados}","{Cidade}",{potenciaFotovoltaica},"{preco}","{tempo}")'
                 cursor.execute(comando)
                 conexao.commit()
 
