@@ -82,13 +82,13 @@ def Admin():
                     st.success("Módulo adicionado com sucesso!")
 
                 else:
-                    st.error('Placa já está cadastrada')
+                    st.error('Módulo já está cadastrado!')
 
             if Op == "Remover":
                 
                 if resultado == []:
                     
-                    st.error("Placa não está cadastrada!")
+                    st.error("Módulo não está cadastrado!")
                     
                 else:
                     
