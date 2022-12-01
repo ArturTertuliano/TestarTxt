@@ -81,7 +81,7 @@ def Admin():
                     comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
                     cursor.execute(comando)
                     conexao.commit()
-                    st.success("Módulo adicionado com sucesso!")"""
+                    st.success("Módulo adicionado com sucesso!")
 
                 else:
                     st.error('Placa já está cadastrada')
