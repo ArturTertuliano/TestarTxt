@@ -182,11 +182,10 @@ def Admin():
             st.table(df)
         else:
         
-            comando = f'SELECT * FROM cliente WHERE nome = {BuscarCliente}'
+            comando = f'SELECT * FROM cliente WHERE nome = "{BuscarCliente}"'
             cursor.execute(comando)
             resultado = cursor.fetchall()
-            st.error(resultado)
-
+           
             if resultado == [] or BuscarCliente != resultado[0][1]:
 
                 st.error("Cliente não encontrado!")
