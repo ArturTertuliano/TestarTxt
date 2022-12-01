@@ -155,13 +155,11 @@ def Admin():
         cursor.execute(comando)
         resultado = cursor.fetchall()
         
-        """df = pd.DataFrame(
+        df = pd.DataFrame(
         resultado,
-        columns=('Nome','Estado','Cidade','Geração','Preço','Data'))
-        st.dataframe(df)"""
-        st.json({
-         resultado
-     })
+        columns=['Nome','Estado','Cidade','Geração','Preço','Data'])
+        st.table(df)
+     
             
             
 def LoggedOut_Clicked():
