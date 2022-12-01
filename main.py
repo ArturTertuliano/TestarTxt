@@ -157,7 +157,7 @@ def Admin():
 
         df = pd.DataFrame(
         resultado,
-        columns=['Nome','Estado','Cidade','Geração','Preço','Data']
+        columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
         )
         st.dataframe(df)
      
