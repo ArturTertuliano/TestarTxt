@@ -149,13 +149,13 @@ def Admin():
         
     AlterarValores6 = st.button("PESQUISAR USUÁRIO")  
     
-        if AlterarValores6:
-            
-            comando = f'SELECT * FROM cliente'
-            cursor.execute(comando)
-            resultado = cursor.fetchall()
-            
-            st.table(resultado)
+    if AlterarValores6:
+
+        comando = f'SELECT * FROM cliente'
+        cursor.execute(comando)
+        resultado = cursor.fetchall()
+
+        st.table(resultado)
             
             
 def LoggedOut_Clicked():
