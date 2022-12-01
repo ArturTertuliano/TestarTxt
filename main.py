@@ -69,9 +69,7 @@ def Admin():
 
 
             if Op == 'Adicionar':
-            
-                #try:
-                    
+  
                 comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
                 cursor.execute(comando)
                 resultado = cursor.fetchall()
@@ -85,14 +83,6 @@ def Admin():
 
                 else:
                     st.error('Placa já está cadastrada')
-                    
-                """except:
-            
-                    valor =1
-                    comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
-                    cursor.execute(comando)
-                    conexao.commit()
-                    st.success("Módulo adicionado com sucesso!")"""
 
             if Op == "Remover":
                 
