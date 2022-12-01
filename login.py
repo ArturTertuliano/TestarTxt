@@ -838,6 +838,11 @@ def main():
                 st.markdown(html, unsafe_allow_html=True)
 
                 bar.progress(100)
+                
+                tempo = str(data.day)+' / '+str(data.month)+' / '+str(data.year)
+                comando = f'INSERT INTO cliente (nome, estado, cidade, geracao,preco,data) VALUES ({Nome},{Estados},{Cidade},{potenciaFotovoltaica},{CapitalFixo},{tempo})'
+                cursor.execute(comando)
+                conexao.commit()
 
                 st.success("PDF pronto pra download!")
                 cursor.close()
