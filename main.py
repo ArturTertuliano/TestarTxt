@@ -154,8 +154,11 @@ def Admin():
         comando = f'SELECT * FROM cliente'
         cursor.execute(comando)
         resultado = cursor.fetchall()
-
-        st.dataframe(resultado)
+        
+        df = pd.DataFrame(
+        resultado,
+        columns=('Nome','Estado','Cidade','Geração','Preço','Data'))
+        st.dataframe(df)
             
             
 def LoggedOut_Clicked():
