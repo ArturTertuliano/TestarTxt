@@ -76,7 +76,7 @@ def Admin():
                 cursor.execute(comando)
                 resultado = cursor.fetchall()
                 print(resultado)
-                st.error("Placa já cadastrada!")
+                st.error(resultado)
                     
                 """except:
             
