@@ -79,7 +79,7 @@ def Admin():
                 conexao.commit()
                 st.success("Módulo adicionado com sucesso!")
 
-            elif:
+            else:
 
                 st.error("Placa já cadastrada!")
 
