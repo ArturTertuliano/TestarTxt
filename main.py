@@ -65,14 +65,14 @@ def Admin():
     if AlterarValores1:
         
        
-
+            comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
+            cursor.execute(comando)
+            resultado = cursor.fetchall()
 
 
             if Op == 'Adicionar':
   
-                comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
-                cursor.execute(comando)
-                resultado = cursor.fetchall()
+                
                 if resultado == []:
                     
                     valor =1
@@ -86,18 +86,18 @@ def Admin():
 
             if Op == "Remover":
                 
-                try:
+                if resultado == []:
+                    
+                    st.error("Placa não está cadastrada!")
+                    
+                else:
                     
                     comando = f'DELETE FROM placas WHERE Modulo = {Placa}'
                     cursor.execute(comando)
                     conexao.commit()
                     st.success("Módulo removido com sucesso!")
-                    
-                except:
-                    
-                    st.error("Placa não está cadastrada!")
-                    
-    
+            
+
     Tarifa = st.number_input ("Alterar tarifa",min_value=0.0)
     AlterarValores2 = st.button("ALTERAR TARIFA")
 
