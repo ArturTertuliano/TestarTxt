@@ -77,9 +77,14 @@ def Admin():
                 resultado = cursor.fetchall()
                 if resultado == []:
                     
-                    st.error('1')
+                    valor =1
+                    comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
+                    cursor.execute(comando)
+                    conexao.commit()
+                    st.success("Módulo adicionado com sucesso!")"""
+
                 else:
-                    st.error('2')
+                    st.error('Placa já está cadastrada')
                     
                 """except:
             
