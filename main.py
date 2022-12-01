@@ -75,7 +75,7 @@ def Admin():
                 comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
                 cursor.execute(comando)
                 resultado = cursor.fetchall()
-                if resultado = '':
+                if resultado == '':
                     
                     st.error('1')
                 else:
