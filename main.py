@@ -64,35 +64,40 @@ def Admin():
 
     if AlterarValores1:
         
-        try:
-            comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
-            cursor.execute(comando)
-            resultado = cursor.fetchall()
+       
 
 
 
-            if Op == 'Adicionar' and Placa != resultado[0][i]:
-
-                valor =1
-                comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
-                cursor.execute(comando)
-                conexao.commit()
-                st.success("Módulo adicionado com sucesso!")
-
-            else:
-
-                st.error("Placa já cadastrada!")
+            if Op == 'Adicionar':
+            
+                try:
+                    
+                    comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
+                    cursor.execute(comando)
+                    resultado = cursor.fetchall()
+                    st.error("Placa já cadastrada!")
+                    
+                except:
+            
+                    valor =1
+                    comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
+                    cursor.execute(comando)
+                    conexao.commit()
+                    st.success("Módulo adicionado com sucesso!")
 
             if Op == "Remover":
-
-                comando = f'DELETE FROM placas WHERE Modulo = {Placa}'
-                cursor.execute(comando)
-                conexao.commit()
-                st.success("Módulo removido com sucesso!")
-          
-        except:
-            st.error("Placa já cadastrada!")
-
+                
+                try:
+                    
+                    comando = f'DELETE FROM placas WHERE Modulo = {Placa}'
+                    cursor.execute(comando)
+                    conexao.commit()
+                    st.success("Módulo removido com sucesso!")
+                    
+                except:
+                    
+                    st.error("Placa não está cadastrada!")
+                    
     
     Tarifa = st.number_input ("Alterar tarifa",min_value=0.0)
     AlterarValores2 = st.button("ALTERAR TARIFA")
