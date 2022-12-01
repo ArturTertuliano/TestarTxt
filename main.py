@@ -88,7 +88,7 @@ def Admin():
                 
                 if resultado == []:
                     
-                    st.error("Módulo não está cadastrado!")
+                    st.error("Módulo não foi encontrado!")
                     
                 else:
                     
@@ -188,7 +188,7 @@ def Admin():
            
             if resultado == [] or BuscarCliente != resultado[0][1]:
 
-                st.error("Cliente não encontrado!")
+                st.error("Cliente não foi encontrado!")
 
             else:
                 
