@@ -65,7 +65,7 @@ def Admin():
     if AlterarValores1:
         
         try:
-            comando = f'SELECT * FROM placas'
+            comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
             cursor.execute(comando)
             resultado = cursor.fetchall()
 
