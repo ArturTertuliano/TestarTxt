@@ -64,20 +64,34 @@ def Admin():
 
     if AlterarValores1:
         
-        if Op == 'Adicionar':
-
-            valor =1
-            comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
+        try:
+            comando = f'SELECT * FROM placas'
             cursor.execute(comando)
-            conexao.commit()
-        
-        elif Op == "Remover":
+            resultado = cursor.fetchall()
 
-            comando = f'DELETE FROM placas WHERE Modulo = {Placa}'
-            cursor.execute(comando)
-            conexao.commit()
-        st.success("Módulo alterado com sucesso!")
-        
+
+
+            if Op == 'Adicionar' and Placa != resultado[0][i]:
+
+                valor =1
+                comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
+                cursor.execute(comando)
+                conexao.commit()
+                st.success("Módulo adicionado com sucesso!")
+
+            elif:
+
+                st.error("Placa já cadastrada!")
+
+            if Op == "Remover":
+
+                comando = f'DELETE FROM placas WHERE Modulo = {Placa}'
+                cursor.execute(comando)
+                conexao.commit()
+                st.success("Módulo removido com sucesso!")
+          
+        except:
+            st.error("Placa já cadastrada!")
 
     
     Tarifa = st.number_input ("Alterar tarifa",min_value=0.0)
@@ -147,7 +161,7 @@ def Admin():
             conexao.commit()
             st.success("Usuário adicionado com sucesso!")
         
-    AlterarValores6 = st.button("PESQUISAR USUÁRIO")  
+    AlterarValores6 = st.button("BUSCAR USUÁRIO")  
     
     if AlterarValores6:
 
