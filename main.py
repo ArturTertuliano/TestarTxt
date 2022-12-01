@@ -60,7 +60,7 @@ def Admin():
     lista = []
     Placa = col1.number_input ("Módulo",min_value=0)
     Op = col2.selectbox ('Opções do Módulo',['Adicionar','Remover'])
-    AlterarValores1 = st.button("ADICIONAR/REMOVER")
+    AlterarValores1 = st.button("APLICAR")
 
     if AlterarValores1:
         
@@ -70,20 +70,20 @@ def Admin():
 
             if Op == 'Adicionar':
             
-                try:
+                #try:
                     
-                    comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
-                    cursor.execute(comando)
-                    resultado = cursor.fetchall()
-                    st.error("Placa já cadastrada!")
+                comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
+                cursor.execute(comando)
+                resultado = cursor.fetchall()
+                st.error("Placa já cadastrada!")
                     
-                except:
+                """except:
             
                     valor =1
                     comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
                     cursor.execute(comando)
                     conexao.commit()
-                    st.success("Módulo adicionado com sucesso!")
+                    st.success("Módulo adicionado com sucesso!")"""
 
             if Op == "Remover":
                 
