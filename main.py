@@ -191,7 +191,7 @@ def Admin():
                 st.error("Cliente não encontrado!")
 
             else:
-                
+                st.error(resultado)
                 df = pd.DataFrame(
                 resultado,
                 columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
