@@ -75,6 +75,7 @@ def Admin():
                 comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
                 cursor.execute(comando)
                 resultado = cursor.fetchall()
+                print(resultado)
                 st.error("Placa já cadastrada!")
                     
                 """except:
