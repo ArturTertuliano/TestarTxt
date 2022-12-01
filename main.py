@@ -164,23 +164,41 @@ def Admin():
             cursor.execute(comando)
             conexao.commit()
             st.success("Usuário adicionado com sucesso!")
-        
+     
+    BuscarCliente = st.text_input ("Nome Completo do cliente")
     AlterarValores6 = st.button("BUSCAR USUÁRIO")  
     
     if AlterarValores6:
+        
+        if BuscarCliente == '':
+            comando = f'SELECT * FROM cliente'
+            cursor.execute(comando)
+            resultado = cursor.fetchall()
 
-        comando = f'SELECT * FROM cliente'
-        cursor.execute(comando)
-        resultado = cursor.fetchall()
+            df = pd.DataFrame(
+            resultado,
+            columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
+            )
+            st.table(df)
+       else:
+        
+            comando = f'SELECT * FROM cliente WHERE nome = {BuscarCliente}'
+            cursor.execute(comando)
+            resultado = cursor.fetchall()
 
-        df = pd.DataFrame(
-        resultado,
-        columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
-        )
-        st.table(df)
-     
-            
-            
+            if resultado == [] or BuscarCliente != resultado[0][1]:
+
+                st.error("Cliente não encontrado!")
+
+            else:
+                
+                df = pd.DataFrame(
+                resultado,
+                columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
+                )
+                st.table(df)
+                
+
 def LoggedOut_Clicked():
     if st.session_state['loggedIn']:
         
