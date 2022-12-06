@@ -109,7 +109,7 @@ def Admin():
         
         st.success("Tarifa alterada com sucesso!")
     
-    ilulimicao = st.number_input ("Alterar iluminação pública",min_value=0.0)
+    iluminacao = st.number_input ("Alterar iluminação pública",min_value=0.0)
     AlterarValoresp = st.button("ALTERAR VALOR")
     
     if AlterarValoresp:
