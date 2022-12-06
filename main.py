@@ -108,7 +108,17 @@ def Admin():
         conexao.commit()
         
         st.success("Tarifa alterada com sucesso!")
-
+    
+    ilulimicao = st.number_input ("Alterar iluminação pública",min_value=0.0)
+    AlterarValoresp = st.button("ALTERAR VALOR")
+    
+    if AlterarValoresp:
+        
+        comando = f'INSERT INTO iluminacao (preco) VALUES ({iluminacao})'
+        cursor.execute(comando)
+        conexao.commit()
+        st.success("Valor da iluminação pública alterada com sucesso!")
+        
     comando = f'SELECT * FROM placas'
     cursor.execute(comando)
     resultado = cursor.fetchall()
