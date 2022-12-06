@@ -103,7 +103,7 @@ def Admin():
 
     if AlterarValores2:
 
-        comando = f'INSERT INTO tarifa (tarifa) VALUES ({Tarifa})'
+        comando = f'UPDATE tarifa SET tarifa = {Tarifa}'
         cursor.execute(comando)
         conexao.commit()
         
@@ -114,7 +114,7 @@ def Admin():
     
     if AlterarValoresp:
         
-        comando = f'INSERT INTO iluminacao (preco) VALUES ({iluminacao})'
+        comando = f'UPDATE iluminacao SET preco = {iluminacao}'
         cursor.execute(comando)
         conexao.commit()
         st.success("Valor da iluminação pública alterada com sucesso!")
