@@ -670,7 +670,7 @@ def main():
                 pdf.set_xy(15,130)
                 pdf.multi_cell(175,5, 'Não é de responsabilidade da Empresa cálculo e reforço/modificações de estrutura; modificações na rede elétrica; adaptação de transformador; armazenamento/seguro de material; segurança local; e ajuste de tensão junto à distribuidora.',border = 0)
                 
-                pdf.image("Imagens/assinatura.png",26,200,w=80,h=50)
+                pdf.image("Imagens/assinatura.png",18,200,w=80,h=50)
                 pdf.text(26,245,txt= 'Assinatura do representante')
                 pdf.text(38,250,txt= 'Dubai Energy')
                 pdf.text(33,255,txt= '35.394.744/0001.12')
