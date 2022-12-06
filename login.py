@@ -669,7 +669,8 @@ def main():
                 pdf.multi_cell(175,5, 'Justificamos que a mão de obra é qualificada, afirmando que todos os componentes são instalados de acordo com instruções e orientações do fabricante, bem como com planos de engenharia, além de códigos e exigências de construção locais.',border = 0)
                 pdf.set_xy(15,130)
                 pdf.multi_cell(175,5, 'Não é de responsabilidade da Empresa cálculo e reforço/modificações de estrutura; modificações na rede elétrica; adaptação de transformador; armazenamento/seguro de material; segurança local; e ajuste de tensão junto à distribuidora.',border = 0)
-
+                
+                pdf.image("Imagens/assinatura.JPG",26,230,w=50,h=30)
                 pdf.text(26,245,txt= 'Assinatura do representante')
                 pdf.text(38,250,txt= 'Dubai Energy')
                 pdf.text(33,255,txt= '35.394.744/0001.12')
