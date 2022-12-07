@@ -66,9 +66,14 @@ def main():
         carencia = ['1','2','3','4','5','6']
 
         RendimentoSistema = 0.845
-        TipoLigacao, ContaLuz, Tarifa= ['MONOFASICO','BIFASICO','TRIFASICO'],70, resultado[0][1]
-
-
+        TipoLigacao, Tarifa= ['MONOFASICO','BIFASICO','TRIFASICO'], resultado[0][1]
+        
+        comando = f'SELECT * FROM iluminacao'
+        cursor.execute(comando)
+        resultado = cursor.fetchall()
+        
+        ContaLuz = resultado[0][1]
+        
         Pessoa = st.selectbox("Selecione o tipo de pessoa *",TipoPessoa)
         Cpf = st.text_input("CPF/CNPJ")
         Nome = st.text_input("Nome do Cliente *")
