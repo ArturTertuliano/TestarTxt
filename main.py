@@ -187,7 +187,7 @@ def Admin():
 
             df = pd.DataFrame(
             resultado,
-            columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
+            columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data','CPF','Telefone','Email','Vendedor']
             )
             st.table(df)
         else:
@@ -204,7 +204,7 @@ def Admin():
                 
                 df = pd.DataFrame(
                 resultado,
-                columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data']
+                columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data','CPF','Telefone','Email','Vendedor']
                 )
                 st.table(df)
                 
