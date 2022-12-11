@@ -835,7 +835,7 @@ def main():
                         pdf.text(20,91, txt='FATURAMENTO MÉDIO MENSAL:____________________')
                         pdf.text(20,99, txt='TELEFONE:(__)9__________-___________')
                         pdf.text(20,107, txt='E-MAIL CORPORATIVO:_______________________________')
-                        pdf.text(20,115, txt='DADOS DO(S) REPRESENTANTES(S) LEGAIS')
+                        pdf.text(20,115, txt='DADOS DO(S) REPRESENTANTE(S) LEGAIS')
                         pdf.text(20,123, txt='NOME COMPLETO:_______________________________')
                         pdf.text(20,131, txt='RG:_______________________________')
                         pdf.text(20,139, txt='CPF:_______________________________')
@@ -864,7 +864,7 @@ def main():
                     
                     tempo = str(data.day)+' / '+str(data.month)+' / '+str(data.year)
                     preco = str(Capital).replace(',','.')+',00'
-                    comando = f'INSERT INTO cliente (nome, estado, cidade, geracao,preco,data) VALUES ("{Nome}","{Estados}","{Cidade}","{str(potenciaFotovoltaica)}","{preco}","{tempo}")'
+                    comando = f'INSERT INTO cliente (nome, estado, cidade, geracao,preco,data,cpf,telefone,email,Vendedor) VALUES ("{Nome}","{Estados}","{Cidade}","{str(potenciaFotovoltaica)}","{preco}","{tempo}","{Cpf}","{Telefone}","{Email}","{vendedor}")'
                     cursor.execute(comando)
                     conexao.commit()
 
