@@ -234,6 +234,10 @@ def main():
 
                     ConsumoDia = float(ConsumoMedio / 30)
                     QtdPlacas = math.ceil((((ConsumoDia * PorcentagemEnergia)/(HSPDia * RendimentoSistema))* 1000)/PotenciaPlaca)
+                    if QtdPlacas < 4 and Inversor1 == 'Micro Inversor':
+                        QtdPlacas = 4
+                    if QtdPlacas < 5 and Inversor1 == 'Inversor':
+                        QtdPlacas = 5
                     potenciaFotovoltaica = (QtdPlacas * PotenciaPlaca) / 1000
 
                     ConsumoAno = float(ConsumoMedio * 12)
