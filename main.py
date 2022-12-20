@@ -54,159 +54,167 @@ def show_main_page():
     
 
 def Admin():
-          
     bar.title("Bem Vindo")
     col1, col2 = st.columns(2)
     lista = []
-    Placa = col1.number_input ("Módulo",min_value=0)
-    Op = col2.selectbox ('Opções do Módulo',['Adicionar','Remover'])
-    AlterarValores1 = st.button("APLICAR")
 
-    if AlterarValores1:
+
+    with logOutSection2:
+        st.sidebar.title("Menu")
+        pag_adm = st.sidebar.selectbox('Opçoes' , ['Selecione uma opção','Módulo','Iluminação' , 'Tarifa' ,'Formula','Parcelas','ADD Ususario','Consulta Clientes'])
+        st.sidebar.button ("Sair", key="logout2", on_click=LoggedOut_Clicked)
         
-       
-            comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
+        if pag_adm == 'Módulo':
+            Placa = col1.number_input ("Módulo",min_value=0)
+            Op = col2.selectbox ('Opções do Módulo',['Adicionar','Remover'])
+            AlterarValores1 = st.button("APLICAR")
+            if AlterarValores1:
+                
+                    comando = f'SELECT * FROM placas WHERE Modulo = {Placa}'
+                    cursor.execute(comando)
+                    resultado = cursor.fetchall()
+
+                    if Op == 'Adicionar':
+        
+                        
+                        if resultado == []:
+                            
+                            valor =1
+                            comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
+                            cursor.execute(comando)
+                            conexao.commit()
+                            st.success("Módulo adicionado com sucesso!")
+
+                        else:
+                            st.error('Módulo já está cadastrado!')
+
+                    if Op == "Remover":
+                        
+                        if resultado == []:
+                            
+                            st.error("Módulo não foi encontrado!")
+                            
+                        else:
+                            
+                            comando = f'DELETE FROM placas WHERE Modulo = {Placa}'
+                            cursor.execute(comando)
+                            conexao.commit()
+                            st.success("Módulo removido com sucesso!")
+        
+        if pag_adm == 'Tarifa':
+
+                Tarifa = st.number_input ("Alterar tarifa",min_value=0.0)
+                AlterarValores2 = st.button("ALTERAR TARIFA")
+
+                if AlterarValores2:
+
+                    comando = f'UPDATE tarifa SET tarifa = {Tarifa}'
+                    cursor.execute(comando)
+                    conexao.commit()                    
+                    st.success("Tarifa alterada com sucesso!")
+                    
+        if pag_adm == 'Iluminação':
+            iluminacao = st.number_input ("Alterar iluminação pública",min_value=0.0)
+            AlterarValoresp = st.button("ALTERAR VALOR")
+                
+            if AlterarValoresp:
+                    
+                comando = f'UPDATE iluminacao SET preco = {iluminacao}'
+                cursor.execute(comando)
+                conexao.commit()
+                st.success("Valor da iluminação pública alterada com sucesso!")
+        
+        if pag_adm == 'Formula':
+            comando = f'SELECT * FROM placas'
             cursor.execute(comando)
             resultado = cursor.fetchall()
 
-
-            if Op == 'Adicionar':
-  
+            for i in range(len(resultado)):
+                lista.append(resultado[i][1])
                 
-                if resultado == []:
+            Placa2 = st.selectbox ('Opções de Módulo',lista)
+            ValorA = st.number_input ("Alterar valor A",min_value=0)
+            ValorB = st.number_input ("Alterar valor B",min_value=0)
+            ValorC = st.number_input ("Alterar valor C",min_value=0)
+
+            AlterarValores3 = st.button("ALTERAR FORMULA")
+
+            if AlterarValores3:
+
+                comando = f'UPDATE placas SET A = {ValorA}, B = {ValorB}, C = {ValorC} WHERE Modulo = {Placa2}'
+                cursor.execute(comando)
+                conexao.commit()
                     
-                    valor =1
-                    comando = f'INSERT INTO placas (Modulo, A, B, C) VALUES ({Placa},{valor},{valor},{valor})'
+                        
+                st.success("Formula alterada com sucesso!")
+        
+        if pag_adm == 'Parcelas':
+            x12 = st.number_input ("Parcela 12x",min_value=0.0)
+            x24 = st.number_input ("Parcela 24x",min_value=0.0)
+            x36 = st.number_input ("Parcela 36x",min_value=0.0)
+            x60 = st.number_input ("Parcela 60x",min_value=0.0)
+            x72 = st.number_input ("Parcela 72x",min_value=0.0)
+            AlterarValores4 = st.button("ALTERAR PARCELAS")
+            
+            if AlterarValores4:
+
+                comando = f'UPDATE parcelas SET x12 = {x12}, x24 = {x24}, x36 = {x36}, x60 = {x60}, x72 = {x72} WHERE idparcelas = {1}'
+                cursor.execute(comando)
+                conexao.commit()
+                
+                st.success("Parcelas alteradas com sucesso!")
+        if pag_adm == 'ADD Ususario':
+            user = st.text_input ("Adicionar usuário *")
+            email = st.text_input ("Adicionar email")
+            nc = st.text_input ("Adicionar Nome Completo *")
+            Telefone = st.text_input ("Adicionar telefone")
+            passw = st.text_input ("Criar password *")
+            AlterarValores5 = st.button("ADICIONAR USUÁRIO")
+
+            if AlterarValores5:
+                if user == '' or passw == '' or nc == '':
+                    
+                    st.error("Alguma informação obrigatório não foi fornecido!")
+                    
+                else:
+                
+                    comando = f'INSERT INTO usuario (user,email,senha,nome,telefone) VALUES ("{user}","{email}","{passw}","{nc}","{Telefone}")'
                     cursor.execute(comando)
                     conexao.commit()
-                    st.success("Módulo adicionado com sucesso!")
-
-                else:
-                    st.error('Módulo já está cadastrado!')
-
-            if Op == "Remover":
+                    st.success("Usuário adicionado com sucesso!")
+        if  pag_adm == 'Consulta Clientes':
+            BuscarCliente = st.text_input ("Nome Completo do cliente")
+            AlterarValores6 = st.button("BUSCAR USUÁRIO")  
+            
+            if AlterarValores6:
                 
-                if resultado == []:
-                    
-                    st.error("Módulo não foi encontrado!")
-                    
-                else:
-                    
-                    comando = f'DELETE FROM placas WHERE Modulo = {Placa}'
+                if BuscarCliente == '':
+                    comando = f'SELECT * FROM cliente'
                     cursor.execute(comando)
-                    conexao.commit()
-                    st.success("Módulo removido com sucesso!")
-            
+                    resultado = cursor.fetchall()
 
-    Tarifa = st.number_input ("Alterar tarifa",min_value=0.0)
-    AlterarValores2 = st.button("ALTERAR TARIFA")
-
-    if AlterarValores2:
-
-        comando = f'UPDATE tarifa SET tarifa = {Tarifa}'
-        cursor.execute(comando)
-        conexao.commit()
-        
-        st.success("Tarifa alterada com sucesso!")
-    
-    iluminacao = st.number_input ("Alterar iluminação pública",min_value=0.0)
-    AlterarValoresp = st.button("ALTERAR VALOR")
-    
-    if AlterarValoresp:
-        
-        comando = f'UPDATE iluminacao SET preco = {iluminacao}'
-        cursor.execute(comando)
-        conexao.commit()
-        st.success("Valor da iluminação pública alterada com sucesso!")
-        
-    comando = f'SELECT * FROM placas'
-    cursor.execute(comando)
-    resultado = cursor.fetchall()
-
-    for i in range(len(resultado)):
-        lista.append(resultado[i][1])
-    
-    Placa2 = st.selectbox ('Opções de Módulo',lista)
-    ValorA = st.number_input ("Alterar valor A",min_value=0)
-    ValorB = st.number_input ("Alterar valor B",min_value=0)
-    ValorC = st.number_input ("Alterar valor C",min_value=0)
-    AlterarValores3 = st.button("ALTERAR FORMULA")
-
-    if AlterarValores3:
-
-        comando = f'UPDATE placas SET A = {ValorA}, B = {ValorB}, C = {ValorC} WHERE Modulo = {Placa2}'
-        cursor.execute(comando)
-        conexao.commit()
-        
-            
-        st.success("Formula alterada com sucesso!")
-
-    x12 = st.number_input ("Parcela 12x",min_value=0.0)
-    x24 = st.number_input ("Parcela 24x",min_value=0.0)
-    x36 = st.number_input ("Parcela 36x",min_value=0.0)
-    x60 = st.number_input ("Parcela 60x",min_value=0.0)
-    x72 = st.number_input ("Parcela 72x",min_value=0.0)
-    AlterarValores4 = st.button("ALTERAR PARCELAS")
-    
-    if AlterarValores4:
-
-        comando = f'UPDATE parcelas SET x12 = {x12}, x24 = {x24}, x36 = {x36}, x60 = {x60}, x72 = {x72} WHERE idparcelas = {1}'
-        cursor.execute(comando)
-        conexao.commit()
-        
-        st.success("Parcelas alteradas com sucesso!")
-
-    user = st.text_input ("Adicionar usuário *")
-    email = st.text_input ("Adicionar email")
-    nc = st.text_input ("Adicionar Nome Completo *")
-    Telefone = st.text_input ("Adicionar telefone")
-    passw = st.text_input ("Criar password *")
-    AlterarValores5 = st.button("ADICIONAR USUÁRIO")
-
-    if AlterarValores5:
-        if user == '' or passw == '' or nc == '':
-            
-            st.error("Alguma informação obrigatório não foi fornecido!")
-            
-        else:
-           
-            comando = f'INSERT INTO usuario (user,email,senha,nome,telefone) VALUES ("{user}","{email}","{passw}","{nc}","{Telefone}")'
-            cursor.execute(comando)
-            conexao.commit()
-            st.success("Usuário adicionado com sucesso!")
-     
-    BuscarCliente = st.text_input ("Nome Completo do cliente")
-    AlterarValores6 = st.button("BUSCAR USUÁRIO")  
-    
-    if AlterarValores6:
-        
-        if BuscarCliente == '':
-            comando = f'SELECT * FROM cliente'
-            cursor.execute(comando)
-            resultado = cursor.fetchall()
-
-            df = pd.DataFrame(
-            resultado,
-            columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data','CPF','Telefone','Email','Vendedor']
-            )
-            st.table(df)
-        else:
-        
-            comando = f'SELECT * FROM cliente WHERE nome = "{BuscarCliente}"'
-            cursor.execute(comando)
-            resultado = cursor.fetchall()
-           
-            if resultado == [] or BuscarCliente != resultado[0][1]:
-
-                st.error("Cliente não foi encontrado!")
-
-            else:
+                    df = pd.DataFrame(
+                    resultado,
+                    columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data','CPF','Telefone','Email','Vendedor']
+                    )
+                    st.table(df)
+                else:
                 
-                df = pd.DataFrame(
-                resultado,
-                columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data','CPF','Telefone','Email','Vendedor']
-                )
-                st.table(df)
+                    comando = f'SELECT * FROM cliente WHERE nome = "{BuscarCliente}"'
+                    cursor.execute(comando)
+                    resultado = cursor.fetchall()
+                
+                    if resultado == [] or BuscarCliente != resultado[0][1]:
+
+                        st.error("Cliente não foi encontrado!")
+
+                    else:
+                        
+                        df = pd.DataFrame(
+                        resultado,
+                        columns=['Proposta','Nome','Estado','Cidade','Geração','Preço','Data','CPF','Telefone','Email','Vendedor']
+                        )
+                        st.table(df)
                 
 
 def LoggedOut_Clicked():
@@ -224,12 +232,9 @@ def show_logout_page1():
         st.sidebar.title("Sair da sua conta")
         st.sidebar.button ("Sair", key="logout", on_click=LoggedOut_Clicked)
 
-def show_logout_page2():
 
-    with logOutSection2:
 
-        st.sidebar.title("Sair da sua conta")
-        st.sidebar.button ("Sair", key="logout2", on_click=LoggedOut_Clicked)
+    
     
 def LoggedIn_Clicked(userName, password):
     try:
@@ -292,7 +297,7 @@ with headerSection:
     
     else:
         if st.session_state['key'] == True:
-            show_logout_page2()    
+            
             Admin()
         else:
             show_login_page()
