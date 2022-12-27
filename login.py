@@ -55,6 +55,7 @@ def CpfVer(Cpf):
     return v
 
 def main():
+    
     try:
         conexao = mysql.connector.connect(
         host = 'dubaienergy.com.br',
@@ -64,7 +65,7 @@ def main():
         )
 
         cursor = conexao.cursor()
-
+        st.sidebar.title("Sair da sua conta "+a)
         comando = f'SELECT * FROM tarifa'
         cursor.execute(comando)
         resultado = cursor.fetchall()
