@@ -65,7 +65,7 @@ def main():
         )
 
         cursor = conexao.cursor()
-        st.sidebar.title("Sair da sua conta "+a)
+        
         comando = f'SELECT * FROM tarifa'
         cursor.execute(comando)
         resultado = cursor.fetchall()
