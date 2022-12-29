@@ -99,7 +99,7 @@ def main():
 
             a.append(resultado[i][4])
 
-        Usuario1 = st.selectbox("Usuário *",a)
+        Usuario1 = st.selectbox("Selecione o vendedor *",a)
         Pessoa = st.selectbox("Selecione o tipo de pessoa *",TipoPessoa)
         Cpf = st.text_input("CPF/CNPJ")
         Nome = st.text_input("Nome do Cliente *")
