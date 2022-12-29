@@ -11,7 +11,7 @@ import mysql.connector
 import main as mn
 
 
-a = ''
+
 
 def convertImage(nomeImage): 
     img = Image.open(nomeImage) 
@@ -55,8 +55,9 @@ def CpfVer(Cpf):
     return v
 
 def main():
-    
     try:
+        
+        
         conexao = mysql.connector.connect(
         host = 'dubaienergy.com.br',
         user ='u251704477_DubaiEnergy',
@@ -65,13 +66,14 @@ def main():
         )
 
         cursor = conexao.cursor()
-        
+
         comando = f'SELECT * FROM tarifa'
         cursor.execute(comando)
         resultado = cursor.fetchall()
 
         UF = ['AC','AL','AM','AP','BA','CE','DF','ES','GO','MA','MG','MS','MT','PA','PB','PE','PI','PR','RJ','RN','RO','RR','RS','SC','SE','SP','TO']
         lista = []
+        a = []
         A,B,C,D = 1.05,1,0.9,0.8
         inclinacao1 = ['A','B','C','D']
         desconto = [0,1,2,3,4,5]
@@ -82,13 +84,22 @@ def main():
 
         RendimentoSistema = 0.845
         TipoLigacao, Tarifa= ['MONOFASICO','BIFASICO','TRIFASICO'], resultado[0][1]
-        
+
         comando = f'SELECT * FROM iluminacao'
         cursor.execute(comando)
         resultado = cursor.fetchall()
-        
+
         ContaLuz = resultado[0][1]
-        
+
+        comando = f'SELECT * FROM usuario'
+        cursor.execute(comando)
+        resultado = cursor.fetchall()
+
+        for i in range(2,len(resultado)):
+
+            a.append(resultado[i][4])
+
+        Usuario1 = st.selectbox("Usuário *",a)
         Pessoa = st.selectbox("Selecione o tipo de pessoa *",TipoPessoa)
         Cpf = st.text_input("CPF/CNPJ")
         Nome = st.text_input("Nome do Cliente *")
@@ -138,7 +149,7 @@ def main():
         desconto1 = st.selectbox("Desconto %",desconto)
 
         export_as_pdf = st.button("Gerar PDF")
-
+        
         if inclinacao == 'A':
             RendimentoSistema = RendimentoSistema * A
         elif inclinacao == 'B':
@@ -148,6 +159,8 @@ def main():
         elif inclinacao == 'D':
             RendimentoSistema = RendimentoSistema * D
         if export_as_pdf:
+        
+
             Verificarcpf = CpfVer(Cpf)
             if Verificarcpf == 1 or Verificarcpf == 3:
                 if Pessoa != '' and Nome !='' and ConsumoMensal != '' and Porcentagem != '': 
@@ -288,7 +301,7 @@ def main():
 
                             CapitalInicial = (round(-1*((((x1 * QtdPlacas) + x2) / x3))))
                             CapitalFixo = -1 * CapitalInicial
-                    
+
                     Capital = format(CapitalInicial* -1,',d')
                     if desconto1 != 0:
                         desconto2 = (CapitalFixo*desconto1)/100
@@ -347,7 +360,7 @@ def main():
                     K = 90
                     J = 400
 
-                    comando = f'SELECT * FROM usuario WHERE user = "{a}"'
+                    comando = f'SELECT * FROM usuario WHERE user = "{Usuario1}"'
                     cursor.execute(comando)
                     resultado = cursor.fetchall()
                     vendedor = resultado[0][4]
@@ -473,7 +486,7 @@ def main():
                     pdf.text(15,120,txt= '1 - CENÁRIO DE CONSUMO/DIMENSIONAMENTO')
 
 
-                
+
 
                     bar.progress(40)
 
@@ -492,7 +505,7 @@ def main():
 
                     r1 = numpy.arange(len(car))
                     Cap = numpy.arange(len(car))
-        
+
                     Cap[0] = CapitalFixo
                     Cap[1] = round(CapitalFixo*1.04)
                     for i in range(2,25):
@@ -598,7 +611,7 @@ def main():
                     pdf.set_text_color(0,0,0)
                     pdf.set_xy(15,150)
                     pdf.multi_cell(175,5, 'Há dois indicadores no gráfico abaixo. O primeiro corresponde a economia anual com energia elétrica com o sistema fotovoltaico. O segundo indicador, corresponde a valorização do capital investido no sistema fotovoltaico, se aplicado a um investimento bancário à uma taxa mínima de atratividade (TMA).',border = 0)
-                    
+
 
 
                     bar.progress(50)
@@ -696,7 +709,7 @@ def main():
                     pdf.multi_cell(175,5, 'Justificamos que a mão de obra é qualificada, afirmando que todos os componentes são instalados de acordo com instruções e orientações do fabricante, bem como com planos de engenharia, além de códigos e exigências de construção locais.',border = 0)
                     pdf.set_xy(15,130)
                     pdf.multi_cell(175,5, 'Não é de responsabilidade da Empresa cálculo e reforço/modificações de estrutura; modificações na rede elétrica; adaptação de transformador; armazenamento/seguro de material; segurança local; e ajuste de tensão junto à distribuidora.',border = 0)
-                    
+
                     pdf.image("Imagens/assinatura.png",13,200,w=80,h=50)
                     pdf.text(26,245,txt= 'Assinatura do representante')
                     pdf.text(38,250,txt= 'Dubai Energy')
@@ -866,7 +879,7 @@ def main():
                     st.markdown(html, unsafe_allow_html=True)
 
                     bar.progress(100)
-                    
+
                     tempo = str(data.day)+' / '+str(data.month)+' / '+str(data.year)
                     preco = str(Capital).replace(',','.')+',00'
                     comando = f'INSERT INTO cliente (nome, estado, cidade, geracao,preco,data,cpf,telefone,email,Vendedor) VALUES ("{Nome}","{Estados}","{Cidade}","{str(potenciaFotovoltaica)}","{preco}","{tempo}","{Cpf}","{Telefone}","{Email}","{vendedor}")'
