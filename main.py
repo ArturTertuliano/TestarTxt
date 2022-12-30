@@ -54,16 +54,19 @@ def show_main_page():
     
 
 def Admin():
-    bar.title("Bem Vindo")
+    
     col1, col2 = st.columns(2)
     lista = []
 
 
     with logOutSection2:
         st.sidebar.title("Menu")
-        pag_adm = st.sidebar.selectbox('Opçoes' , ['Selecione uma opção','Módulo','Iluminação' , 'Tarifa' ,'Formula','Parcelas','ADD Ususario','Consulta Clientes'])
+        pag_adm = st.sidebar.selectbox('Opçoes' , ['Início','Módulo','Iluminação' , 'Tarifa' ,'Formula','Parcelas','ADD Ususario','Consulta Clientes'])
         st.sidebar.button ("Sair", key="logout2", on_click=LoggedOut_Clicked)
         
+        if pag_adm == 'Início':
+            bar.title("Bem-vindo administrador!!!! Selecione uma opção na caixa ao lado para fazer a alteração do seu gosto.")
+
         if pag_adm == 'Módulo':
             Placa = col1.number_input ("Módulo",min_value=0)
             Op = col2.selectbox ('Opções do Módulo',['Adicionar','Remover'])
