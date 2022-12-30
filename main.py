@@ -61,7 +61,7 @@ def Admin():
 
     with logOutSection2:
         st.sidebar.title("Menu")
-        pag_adm = st.sidebar.selectbox('Opçoes' , ['Início','Módulo','Iluminação' , 'Tarifa' ,'Formula','Parcelas','ADD Ususario','Consulta Clientes'])
+        pag_adm = st.sidebar.selectbox('Opções' , ['Início','Módulo','Iluminação' , 'Tarifa' ,'Formula','Parcelas','ADD Usurário','Consulta Clientes'])
         st.sidebar.button ("Sair", key="logout2", on_click=LoggedOut_Clicked)
         
         if pag_adm == 'Início':
