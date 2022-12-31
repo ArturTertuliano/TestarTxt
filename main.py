@@ -68,6 +68,7 @@ def Admin():
             bar.title("Bem-vindo administrador!!!! Selecione uma opção na caixa ao lado para fazer a alteração do seu gosto.")
 
         if pag_adm == 'Módulo':
+            bar.title("Módulo")
             Placa = col1.number_input ("Módulo",min_value=0)
             Op = col2.selectbox ('Opções do Módulo',['Adicionar','Remover'])
             AlterarValores1 = st.button("APLICAR")
@@ -105,7 +106,7 @@ def Admin():
                             st.success("Módulo removido com sucesso!")
         
         if pag_adm == 'Tarifa':
-
+                bar.title("Tarifa")
                 Tarifa = st.number_input ("Alterar tarifa",min_value=0.0)
                 AlterarValores2 = st.button("ALTERAR TARIFA")
 
@@ -117,6 +118,7 @@ def Admin():
                     st.success("Tarifa alterada com sucesso!")
                     
         if pag_adm == 'Iluminação':
+            bar.title("Iluminação")
             iluminacao = st.number_input ("Alterar iluminação pública",min_value=0.0)
             AlterarValoresp = st.button("ALTERAR VALOR")
                 
@@ -128,6 +130,7 @@ def Admin():
                 st.success("Valor da iluminação pública alterada com sucesso!")
         
         if pag_adm == 'Formula':
+            bar.title("Formula")
             comando = f'SELECT * FROM placas'
             cursor.execute(comando)
             resultado = cursor.fetchall()
@@ -152,6 +155,7 @@ def Admin():
                 st.success("Formula alterada com sucesso!")
         
         if pag_adm == 'Parcelas':
+            bar.title("Parcelas")
             x12 = st.number_input ("Parcela 12x",min_value=0.0)
             x24 = st.number_input ("Parcela 24x",min_value=0.0)
             x36 = st.number_input ("Parcela 36x",min_value=0.0)
@@ -166,7 +170,8 @@ def Admin():
                 conexao.commit()
                 
                 st.success("Parcelas alteradas com sucesso!")
-        if pag_adm == 'ADD Ususario':
+        if pag_adm == 'ADD Usurário':
+            bar.title("ADD Usurário")
             user = st.text_input ("Adicionar usuário *")
             email = st.text_input ("Adicionar email")
             nc = st.text_input ("Adicionar Nome Completo *")
@@ -186,6 +191,7 @@ def Admin():
                     conexao.commit()
                     st.success("Usuário adicionado com sucesso!")
         if  pag_adm == 'Consulta Clientes':
+            bar.title("Clientes")
             BuscarCliente = st.text_input ("Nome Completo do cliente")
             AlterarValores6 = st.button("BUSCAR USUÁRIO")  
             
